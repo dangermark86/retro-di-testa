@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
-    "postbuild": "node scripts/prepare-public.mjs && node scripts/backup.mjs",
+    "postbuild": "node scripts/prepare-public.mjs",
     "backup": "node scripts/backup.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
