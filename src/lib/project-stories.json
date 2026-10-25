@@ -1,0 +1,1583 @@
+{
+  "legendary": [
+    {
+      "id": "argomento-3",
+      "title": "Dal centrale Yamaha alla coppia stereo",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-aab3b4ff3a84.webp",
+          "caption": "Dal centrale Yamaha alla coppia stereo · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-6aecd7991655.webp",
+          "caption": "Dal centrale Yamaha alla coppia stereo · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "L idea iniziale non era creare una cassa definitiva. Il punto di partenza era molto piu concreto: migliorare la resa del parlato in un sistema Yamaha 5.1. Il centrale originale, basato su una soluzione piccola e limitata, non dava la presenza desiderata. La prima esigenza era quindi semplice: costruire qualcosa di piu potente, piu chiaro e piu efficace sulle voci."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Da quella prima prova e nata la sorpresa. Una cassa pensata quasi per sfizio personale ha iniziato a suonare molto meglio del previsto. A quel punto il progetto ha cambiato direzione: non piu solo un esperimento per il parlato, ma una vera coppia stereo sinistra/destra. La Legendary nasce quindi da un processo reale: bisogno pratico, prova, ascolto, decisione di fare sul serio."
+        },
+        {
+          "kind": "paragraph",
+          "text": " prima e nata la necessita di sentire meglio. Solo dopo e nato il nome Legendary."
+        }
+      ],
+      "sourcePage": 3
+    },
+    {
+      "id": "argomento-4",
+      "title": "Obiettivo sonoro e primo ascolto",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-aab3b4ff3a84.webp",
+          "caption": "Obiettivo sonoro e primo ascolto · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-e25e48c1c0c0.webp",
+          "caption": "Obiettivo sonoro e primo ascolto · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il mio obiettivo principale era la qualita audio. Non una qualita astratta, ma una qualita percepibile subito: voce piu squillante, parlato piu leggibile, cantato con piu dettagli e strumenti piu facili da distinguere. La Legendary doveva dare la sensazione che il suono non fosse chiuso dentro la scatola."
+        },
+        {
+          "kind": "paragraph",
+          "text": "L ascolto che ha confermato il progetto e stato una traccia di batteria in alta qualita su Amazon Music. La selezione in qualita studio ha messo in evidenza piatti, colpi e attacchi. La mia reazione è stata netta: chiudendo gli occhi il suono mi sembrava reale. Quel momento ha trasformato la cassa da esperimento a progetto riuscito."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Primo vero wow: una base di batteria in alta qualita. I piatti e i colpi hanno dato la sensazione di un suono reale, fisico, credibile."
+        }
+      ],
+      "sourcePage": 4
+    },
+    {
+      "id": "argomento-5",
+      "title": "Tre vie e tweeter esterno",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-148d8d10d8ab.webp",
+          "caption": "Tre vie e tweeter esterno · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Tre vie e tweeter esterno · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La configurazione a 3 vie nasce dalla curiosita e dall esigenza di separare meglio il lavoro dei driver. Non ricordavo di aver posseduto prima una vera cassa a 3 vie: vedere altri progetti e ascoltare esempi online ha fatto scattare l idea."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il funzionamento e semplice: il woofer lavora sulle basse frequenze, il medio gestisce la parte fondamentale di voce e strumenti, il tweeter si occupa degli alti. Dividendo il lavoro, ogni altoparlante viene usato in una zona piu adatta. Il tweeter esterno nasce invece da un vincolo fisico: con una stampante da 35 x 35 x 35 cm non era facile integrare tutto mantenendo proporzioni e volume. Il limite e diventato una scelta estetica, vicina al linguaggio di alcuni diffusori high-end con tweeter separato."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il tweeter esterno non e solo estetica: nasce da spazio, geometria e limiti reali della stampa 3D."
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "argomento-6",
+      "title": "Design e forma del cabinet",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-e25e48c1c0c0.webp",
+          "caption": "Design e forma del cabinet · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Design e forma del cabinet · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Durante la ricerca delle forme disponibili nel mondo hi-fi, l attenzione e finita su diffusori con linee morbide, arrotondate, quasi a uovo. La mia ispirazione e il linguaggio visivo di B&W: non una copia, ma un riferimento per uscire dal classico box rettangolare."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La stampa 3D ha reso possibile realizzare un retro curvo e una struttura piu personale. Dal punto di vista meccanico, una forma arrotondata riduce anche l impressione di una scatola rigida e ordinaria. Esteticamente, il tweeter nero sopra il corpo bianco crea un contrasto forte e riconoscibile."
+        }
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "argomento-7",
+      "title": "Stampa 3D e difficoltà di costruzione",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-148d8d10d8ab.webp",
+          "caption": "Stampa 3D e difficoltà di costruzione · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-9fcf30bcc1bf.webp",
+          "caption": "Stampa 3D e difficoltà di costruzione · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La difficolta maggiore non e stata solo progettare la cassa, ma portare a termine fisicamente la stampa. Il corpo principale ha richiesto quasi tre giorni di lavoro continuo. Durante il processo ci sono stati inceppamenti del filamento e problemi all hotend. A un certo punto il progetto sembrava quasi perso."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La soluzione e stata cambiare materiale/filamento e continuare con i pezzi necessari. Il frontalino ha richiesto circa 18 ore aggiuntive. La progettazione ha richiesto circa 10 ore, ma il tempo vero e stato assorbito da stampa, controlli, assemblaggio e misure."
+        },
+        {
+          "kind": "paragraph",
+          "text": "In pratica: circa 70 ore per il corpo, circa 18 ore per il frontale. Una cassa cosi non nasce in un pomeriggio."
+        }
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "argomento-8",
+      "title": "Scheda tecnica e volume interno",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-aab3b4ff3a84.webp",
+          "caption": "Scheda tecnica e volume interno · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Scheda tecnica e volume interno · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ho calcolato l’ingombro interno teorico sottraendo 12 mm di parete per lato. I 7,2 litri sono un volume lordo di riferimento: il netto è minore per driver, camera del medio, condotto reflex, filtro e cablaggio."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Nome",
+              "Sala Acoustics Legendary"
+            ],
+            [
+              "Tipologia",
+              "Diffusore da scaffale DIY a tre vie, bass reflex posteriore"
+            ],
+            [
+              "Dimensioni esterne",
+              "170 × 180 × 340 mm (L × P × H)"
+            ],
+            [
+              "Pareti",
+              "12 mm in PETG su lati, top, fondo e pannello posteriore"
+            ],
+            [
+              "Volume interno lordo teorico",
+              "146 × 156 × 316 mm, circa 7,2 litri; il volume netto è inferiore per geometria e ingombri dei componenti"
+            ],
+            [
+              "Woofer",
+              "Dynavox 204205 da 5,25\", 8 Ω, 30 W massimi dichiarati, membrana in polipropilene"
+            ],
+            [
+              "Specifiche dichiarate del woofer",
+              "50 Hz–4 kHz; Fs 80 Hz; sensibilità 91 dB; magnete 280 g"
+            ],
+            [
+              "Medio",
+              "2\" recuperato da un diffusore laterale Yamaha"
+            ],
+            [
+              "Tweeter",
+              "1,5\", circa 30 W dichiarati, 6 Ω"
+            ],
+            [
+              "Crossover",
+              "Leron WEAH338; 4–8 Ω e 120 W massimi dichiarati per il filtro; separazioni elettriche dichiarate a 980 e 5.000 Hz"
+            ],
+            [
+              "Cabinet",
+              "PETG stampato in 3D, scelto per la resistenza termica superiore al PLA"
+            ],
+            [
+              "Peso stimato",
+              "Circa 2,4–2,7 kg per diffusore completo"
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 8
+    },
+    {
+      "id": "argomento-9",
+      "title": "Driver, crossover e cablaggio",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-a73b36e3e7be.webp",
+          "caption": "Driver, crossover e cablaggio · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-e25e48c1c0c0.webp",
+          "caption": "Driver, crossover e cablaggio · dettaglio 2"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Driver, crossover e cablaggio · dettaglio 3"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il woofer Dynavox da 5.25 pollici e il motore principale del diffusore. La membrana in polipropilene e la sensibilita dichiarata di 91 dB lo rendono adatto a un progetto compatto ma con buona presenza. Il medio da 2 pollici recuperato da una cassa Yamaha lavora sulla parte piu importante per la voce. Il tweeter da 1.5 pollici gestisce gli alti."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il crossover Leron WEAH338 divide il segnale in tre bande. Meccanicamente il percorso e chiaro: morsetti posteriori, filtro, poi tre uscite verso woofer, medio e tweeter. I tagli dichiarati sono 980 Hz e 5000 Hz. L impedenza effettiva del sistema andrebbe verificata con misura dedicata, perche i driver non hanno tutti la stessa impedenza."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mk2: rinforzare la zona dei connettori posteriori e rendere il retro piu pieno e robusto."
+        }
+      ],
+      "sourcePage": 9
+    },
+    {
+      "id": "argomento-10",
+      "title": "Metodo e lettura dei grafici REW",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-aab3b4ff3a84.webp",
+          "caption": "Metodo e lettura dei grafici REW"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le misure sono state fatte con REW in ambiente domestico. Questo e importante: sotto circa 150-200 Hz la stanza influenza molto il risultato. Pareti, TV, mobile, distanza dal pavimento e posizione del microfono possono creare rinforzi e cancellazioni."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per questo in queste prove si separano le misure della singola cassa dalle misure stereo nel punto di ascolto. La singola cassa serve a capire il diffusore. La misura L+R serve a capire il sistema completo nella stanza."
+        },
+        {
+          "kind": "paragraph",
+          "text": "SPL & Phase: livello per frequenza, quindi bilanciamento tonale. 15 e 30 gradi: dispersione laterale, cioe come cambia il suono se ti sposti. THD: distorsione, quindi quanta energia indesiderata appare oltre al segnale. Waterfall: decadimento nel tempo, utile per scovare risonanze. Spectrogram: energia nel tempo letta con colori. Stereo L+R: il risultato reale con entrambe le casse nella posizione della testa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Regola pratica: le irregolarita sotto i bassi non sono automaticamente colpa della cassa. Spesso sono stanza e posizione."
+        }
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "argomento-11",
+      "title": "Risposta in asse: 0°",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-a2a4960fa954.webp",
+          "caption": "Risposta in asse: 0°"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La misura in asse e la base di lettura del diffusore. La curva mostra una buona presenza nella zona medio-alta e non evidenzia crolli drammatici nelle aree di incrocio. Questo e importante per voce, dettaglio e intelligibilita."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La parte bassa va letta con prudenza perche e influenzata dall ambiente. Il comportamento generale suggerisce una cassa viva, presente, non scura e non chiusa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lettura pratica: la Legendary punta a un suono aperto e leggibile, con forte attenzione a voce e dettaglio."
+        }
+      ],
+      "sourcePage": 11
+    },
+    {
+      "id": "argomento-12",
+      "title": "Dispersione: 15° e 30°",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-40620038f9eb.webp",
+          "caption": "Dispersione: 15° e 30° · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-62d18bab1662.webp",
+          "caption": "Dispersione: 15° e 30° · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "A 15 gradi la risposta resta vicina a quella in asse. A 30 gradi gli alti estremi si attenuano di piu, ma senza un collasso netto nella zona vocale. Questo significa che il diffusore mantiene una certa coerenza anche quando l ascoltatore non e perfettamente davanti."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per una bookshelf domestica e un dato utile: una buona dispersione rende l ascolto meno legato a un punto millimetrico e aiuta la scena stereo in una stanza reale."
+        }
+      ],
+      "sourcePage": 12
+    },
+    {
+      "id": "argomento-13",
+      "title": "Distorsione e waterfall",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-83dc442c063f.webp",
+          "caption": "Distorsione e waterfall · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-1e844b43f103.webp",
+          "caption": "Distorsione e waterfall · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La THD non mostra segnali evidenti di un sistema in crisi al livello di misura usato. Non emergono impennate tali da far pensare a driver completamente fuori controllo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il waterfall mostra code piu importanti in basso, cosa normale in ambiente domestico. Nella parte media e alta il decadimento appare piu ordinato. Non si vedono risonanze meccaniche isolate e lunghissime che suggeriscano un cabinet problematico."
+        },
+        {
+          "kind": "paragraph",
+          "text": "In sintesi: nessun campanello d allarme evidente su distorsione e risonanze macroscopiche."
+        }
+      ],
+      "sourcePage": 13
+    },
+    {
+      "id": "argomento-14",
+      "title": "Spettrogramma e risposta stereo",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-c75ad5170a89.webp",
+          "caption": "Spettrogramma e risposta stereo · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-d7c5c5fe78c5.webp",
+          "caption": "Spettrogramma e risposta stereo · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Lo spettrogramma mostra dove l energia resta nel tempo. Le zone calde sono piu forti, quelle blu piu deboli. Il basso mostra code piu evidenti, mentre la gamma media e alta risulta piu compatta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La misura stereo L+R e quella piu vicina all ascolto vero: entrambe le casse accese, microfono nel punto della testa. Qui la medio-alta rimane abbastanza regolare, mentre le oscillazioni piu evidenti sono nei bassi, dove domina l ambiente."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per l obiettivo dichiarato - voce chiara e dettaglio - la parte piu importante del grafico va nella direzione giusta."
+        }
+      ],
+      "sourcePage": 14
+    },
+    {
+      "id": "argomento-15",
+      "title": "Spettrogramma stereo L+R",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-6721a82aa93e.webp",
+          "caption": "Spettrogramma stereo L+R"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Qui non stiamo piu guardando solo una cassa. Stiamo guardando l intero sistema nella stanza: due diffusori, posizione reale, pareti, mobili, TV, riflessioni e punto di ascolto. E normale che in basso compaiano code e accumuli."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il dato positivo e che sopra la zona piu problematica dei bassi la risposta appare piu ordinata. Questo e importante per voce, batteria, piatti, chitarre e dettaglio del cantato."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Una misura domestica non racconta un mondo perfetto: racconta il sistema vero. Ed e proprio per questo che e utile."
+        }
+      ],
+      "sourcePage": 15
+    },
+    {
+      "id": "argomento-16",
+      "title": "La storia del progetto",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-6aecd7991655.webp",
+          "caption": "La storia del progetto"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "\"L idea non era creare subito una Legendary. Ho iniziato per prova, per sfizio personale, per migliorare il parlato del mio Yamaha 5.1. Volevo qualcosa di piu potente e con una resa maggiore sulla voce.\""
+        },
+        {
+          "kind": "paragraph",
+          "text": "\"Dopo la prima cassa ho capito che suonava molto meglio del previsto. Da li ho deciso di fare una coppia stereo. Con l aiuto dell intelligenza artificiale ho iniziato a ragionare sulle forme e sulle possibilita reali.\""
+        },
+        {
+          "kind": "paragraph",
+          "text": "\"La scelta del 3 vie e nata perche non ricordavo di aver mai avuto un vero 3 vie. Guardando video e progetti online e scattata l idea: volevo sentire una qualita migliore, con ogni driver dedicato alla sua parte.\""
+        },
+        {
+          "kind": "paragraph",
+          "text": "\"Il tweeter esterno nasce dal limite della stampante e dello spazio nel mobile. Poi pero e diventato una parte estetica del progetto, con una forma che ricorda certe soluzioni B&W.\""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Momento decisivo: una traccia di batteria in alta qualita su Amazon Music. I piatti e i colpi sembravano reali. Li e arrivato il wow."
+        }
+      ],
+      "sourcePage": 16
+    },
+    {
+      "id": "argomento-17",
+      "title": "Idee per la Mk2",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-148d8d10d8ab.webp",
+          "caption": "Idee per la Mk2 · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Idee per la Mk2 · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La futura Legendary Mk2 resterebbe stampata in 3D. Il motivo e pratico: non c e lo spazio per una vera falegnameria. La stampante permette invece di lavorare in uno stanzino molto piccolo, usato come laboratorio, zona di registrazione, area di progettazione e spazio per costruire prototipi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il punto principale da migliorare e la struttura posteriore. Nella prima versione la zona dei connettori e risultata troppo sottile. Una Mk2 dovrebbe avere un retro piu pieno, piu rigido e piu robusto, mantenendo pero la stessa filosofia: cabinet personale, forma arrotondata, tweeter esterno e costruzione 3D."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per me è il mio primo vero progetto audio orientato alla qualita."
+        }
+      ],
+      "sourcePage": 17
+    },
+    {
+      "id": "argomento-18",
+      "title": "Conclusioni e bilancio",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/legendary-aab3b4ff3a84.webp",
+          "caption": "Conclusioni e bilancio · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-e25e48c1c0c0.webp",
+          "caption": "Conclusioni e bilancio · dettaglio 2"
+        },
+        {
+          "src": "/immagini/progetti/articolo/legendary-52b37dff9469.webp",
+          "caption": "Conclusioni e bilancio · dettaglio 3"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La Legendary non e un monitor da studio anecoico e non e una torre hi-fi tradizionale. E una bookshelf DIY evoluta: compatta, particolare, costruita con mezzi domestici ma con un obiettivo chiaro. Vuole dare presenza, dettaglio e una forte identita visiva."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il confronto piu sensato non e con mini casse economiche, ma con progetti DIY seri e bookshelf commerciali di fascia medio-bassa o media. La finitura resta artigianale, ma le misure e la costruzione mostrano un progetto coerente, non un esperimento casuale."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Punti forti: originalita, tre vie, tweeter esterno, buona presenza vocale, progetto replicabile. Limiti: misure in ambiente, crossover commerciale, finitura artigianale e retro da irrobustire. Tre parole: incredibile, potente, efficace."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Verdetto: un primo progetto qualitativo riuscito, con identita chiara e margini reali per una Mk2 ancora piu solida."
+        }
+      ],
+      "sourcePage": 18
+    }
+  ],
+  "music-essence-tallava": [
+    {
+      "id": "argomento-2",
+      "title": "Obiettivo e dati di progetto",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La Music Essence non nasce per sostituire la Legendary in scala ridotta. Nasce per un compito diverso: essere un diffusore compatto, capace di lavorare su scrivania o in un piccolo ambiente, con un ascolto da vicino e con una priorita precisa su voce, strumenti, dettaglio e scena."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ho costruito il progetto con un cabinet stampato in 3D, un midwoofer da 4 pollici, un tweeter a cupola e un crossover passivo commerciale a due vie. È una mia costruzione DIY: qui racconto il montaggio e le misure nella stanza di ascolto, distinguendo le specifiche dichiarate dei componenti dai risultati delle prove."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Distinguo tre tipi di informazioni: dati dichiarati dal venditore o sulle targhette; dati misurati tramite REW; interpretazioni tecniche, esplicitamente indicate come tali. Questo evita di trasformare un grafico o una specifica commerciale in una certezza che non e stata verificata."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Modello",
+              "Sala Acoustics Music Essence"
+            ],
+            [
+              "Edizione",
+              "Tallava Edition"
+            ],
+            [
+              "Architettura",
+              "2 vie passive, box chiuso"
+            ],
+            [
+              "Uso previsto",
+              "Desktop / nearfield / ascolto a distanza breve o media"
+            ],
+            [
+              "Dimensioni esterne",
+              "307 x 130 x 200 mm"
+            ],
+            [
+              "Pareti",
+              "10 mm dichiarati"
+            ],
+            [
+              "Impedenza di progetto",
+              "8 Ohm nominali - come riportato in targhetta"
+            ],
+            [
+              "Potenza in targhetta",
+              "15 W nominali / 50 W massimi"
+            ],
+            [
+              "Metodo di misura",
+              "REW, diffusore destro a 1 m e coppia L+R in zona ascolto"
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "argomento-3",
+      "title": "Design del cabinet",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-e54af45f71a3.webp",
+          "caption": "Design del cabinet · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-0cf4e9eb1e78.webp",
+          "caption": "Design del cabinet · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il linguaggio visivo unisce superfici bianche curve, baffle e retro neri, viti a vista e un dettaglio giallo del cono. La forma non e un rettangolo puro: la geometria rastremata e stata scelta per dare un profilo piu dinamico e per allontanare il progetto dall aspetto di una semplice scatola parallela."
+        }
+      ],
+      "sourcePage": 3
+    },
+    {
+      "id": "argomento-4",
+      "title": "Origine e Tallava Edition",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Dopo la Legendary, il passo successivo non e stato aumentare ulteriormente dimensioni o numero di altoparlanti. Il punto di partenza era l esigenza opposta: un diffusore piu piccolo, destinato a una scrivania, a un uso quasi da studio e a un ascolto non troppo lontano."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La Legendary, per volume e impostazione, rappresenta un progetto piu grande e piu spettacolare. Ho pensato la Music Essence invece per rendere leggibili i particolari: il corpo delle voci, la presenza degli strumenti, gli attacchi delle percussioni, il sax e le sfumature di registrazioni tranquille o audiophile."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Volevo fare qualcosa da studio, qualcosa che si potesse mettere su una scrivania. Non una cassa per ascoltare da lontanissimo, ma un due vie per stare abbastanza vicino alla musica.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "C e anche un lato personale. Ho concepito il progetto come regalo e ha assunto una sua identita: Tallava Edition. Il nome richiama l ascolto di musica balcanica e di arrangiamenti con fiati, tamburi, batterie e strumenti che meritano energia nella gamma media e alta."
+        }
+      ],
+      "sourcePage": 4
+    },
+    {
+      "id": "argomento-5",
+      "title": "Scelta delle due vie",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-ce474f2b221e.webp",
+          "caption": "Scelta delle due vie · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-e1c73279edf4.webp",
+          "caption": "Scelta delle due vie · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Perche un due vie? Un tre vie era stato considerato, ma entro 307 mm di altezza esterna avrebbe compresso eccessivamente il volume riservato al driver principale. Inserire un medio avrebbe reso il mobile piu affollato senza garantire un guadagno proporzionato. La scelta e diventata quindi una configurazione piu diretta: midwoofer da 4 pollici e tweeter dedicato."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Che suono doveva avere? Dettaglio, voci leggibili e strumenti distinti. Non l obiettivo del sub-basso o del volume da festa, ma una resa aperta e coinvolgente per musica classica, chill, jazz, registrazioni di strumenti e contenuti in cui i particolari contano."
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "argomento-6",
+      "title": "Woofer, cassa chiusa e prime impressioni",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Perche un 4 pollici? L idea iniziale prevedeva un 3 pollici. Sul mercato, pero, molti 3 pollici sono full range e l offerta di veri piccoli woofer e limitata. Il 4 pollici e diventato il compromesso pratico: piu superficie radiante, maggior reperibilita e un migliore uso del volume interno."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Perche il box chiuso? Non viene presentato come una legge universale contro il reflex. Un reflex puo funzionare anche con piccoli driver, ma richiede parametri affidabili del woofer, volume e accordo del condotto progettati insieme. Per Music Essence ho scelto il box chiuso: semplice, controllata e meno dipendente da un tubo reflex non calcolato per quel driver."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cosa ha sorpreso al primo ascolto? A distanza troppo ravvicinata il risultato non sembrava subito speciale. Spostandomi di alcuni metri, ho sentito maggiore scena e naturalezza. Questo e un punto importante: la Music Essence e compatta, ma il suo equilibrio cambia in modo percepibile tra ascolto immediato sul tavolo e ascolto da una distanza piu ampia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Brillante. I bassi ci sono, ma non e un 4 pollici che deve fare chissa cosa. Con l equalizzatore possono esserci, ma la sua forza e soprattutto la musica rilassata, gli strumenti e il dettaglio.”"
+        }
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "argomento-7",
+      "title": "Dimensioni e volume interno",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-e04f58906bdb.webp",
+          "caption": "Dimensioni e volume interno · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-63fdedee5398.webp",
+          "caption": "Dimensioni e volume interno · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cosa significa 5,68 L? E un valore geometrico massimo ricavato dal parallelepipedo interno teorico. Il volume acustico effettivo e minore: lo riducono le pareti non perfettamente parallele, il cestello del woofer, il tweeter, il crossover, i morsetti e il materiale assorbente. In queste prove non viene quindi attribuito un volume netto fittizio."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Altezza esterna",
+              "307 mm"
+            ],
+            [
+              "Larghezza esterna",
+              "130 mm"
+            ],
+            [
+              "Profondita esterna",
+              "200 mm"
+            ],
+            [
+              "Spessore pareti",
+              "10 mm su lati, alto e basso - dato del mio progetto"
+            ],
+            [
+              "Volume interno teorico di contenimento",
+              "circa 287 x 110 x 180 mm = 5,68 L, prima di sottrarre driver, filtro, assorbente e geometria rastremata"
+            ],
+            [
+              "Volume netto acustico",
+              "non misurato direttamente; e necessariamente inferiore al valore teorico"
+            ],
+            [
+              "Caricamento",
+              "chiuso, senza condotto reflex"
+            ],
+            [
+              "Assorbente",
+              "presente nella fase progettuale; quantitativo e densita non sono usati per calcoli quantitativi in queste prove"
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "argomento-8",
+      "title": "Alette posteriori",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-24d78edf8d71.webp",
+          "caption": "Alette posteriori · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-82fd68d27bf7.webp",
+          "caption": "Alette posteriori · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La mia ispirazione viene da diffusori B&W: il retro non e una superficie anonima, ma una parte visibile del progetto. Le alette non sono materiale fonoassorbente nel senso tradizionale. Essendo esterne, non assorbono direttamente l onda interna del box come farebbe una spugna interna."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La lettura tecnica corretta e diversa: la struttura puo aumentare localmente la rigidita della parte posteriore, spezzare una grande superficie piatta in molte piccole sezioni e modificare le modalita di vibrazione del pannello. Quanto questa scelta cambi davvero la risposta acustica richiederebbe misure comparative del pannello, ma come architettura meccanica e come identita visiva e una delle firme piu riconoscibili della Music Essence."
+        }
+      ],
+      "sourcePage": 8
+    },
+    {
+      "id": "argomento-9",
+      "title": "Morsetti e targhetta",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-fc3fa582bb4f.webp",
+          "caption": "Morsetti e targhetta"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La targhetta riporta Music Essence, impedenza 8 Ohm, potenza nominale 15 W e potenza massima 50 W. Queste indicazioni definiscono la classificazione del progetto e devono essere interpretate come rating del diffusore completo, non del solo woofer."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il woofer, il tweeter e il crossover hanno ciascuno proprie specifiche commerciali; il limite reale dell insieme dipende dal punto piu vulnerabile, dal filtro e soprattutto da quanto contenuto subsonico ed equalizzazione vengono inviati al piccolo driver."
+        }
+      ],
+      "sourcePage": 9
+    },
+    {
+      "id": "argomento-10",
+      "title": "Architettura e percorso del segnale",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il segnale entra dai morsetti posteriori e raggiunge il crossover a due vie. Il filtro lo divide tra il Vonyx WK10 da 4 pollici, montato nel box chiuso, e il tweeter a cupola da 6 Ω. Il taglio elettrico dichiarato è a 2,9 kHz."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il valore 2.900 Hz e una specifica elettrica del filtro commerciale, non una misura automatica dell incrocio acustico reale. Il punto reale dipende da impedenza dei driver, sensibilita, risposta in baffle e pendenze effettive. Nelle mie misure REW non vedo un enorme vuoto evidente in zona di incrocio, ma non sostituiscono misure separate e gated dei due driver."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Midwoofer",
+              "Vonyx WK10 da 4 pollici, 8 Ohm, membrana indicata come Kevlar dalla pagina del venditore."
+            ],
+            [
+              "Tweeter",
+              "Cupola a film/seta, 6 Ohm, 30 W dichiarati dalla pagina del venditore."
+            ],
+            [
+              "Crossover",
+              "Crossover 2 vie commerciale; taglio elettrico dichiarato 2.900 Hz; potenza commerciale dichiarata 180 W."
+            ],
+            [
+              "Cabinet",
+              "Box chiuso in stampa 3D, pareti dichiarate da 10 mm."
+            ],
+            [
+              "Sistema",
+              "Diffusore passivo a 2 vie. La targhetta riporta 8 Ohm nominali per il diffusore completo."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "argomento-11",
+      "title": "Il woofer Vonyx WK10",
+      "images": [
+        {
+          "src": "/immagini/progetti/componenti/woofer-vonyx.webp",
+          "caption": "Vonyx WK10: immagine tecnica del componente, fonte commerciale Vonyx."
+        },
+        {
+          "src": "/immagini/progetti/componenti/woofer-installato.webp",
+          "caption": "Il woofer montato nella mia Music Essence: fotografia del progetto."
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Nome commerciale",
+              "Vonyx WK10 HiFi Breitbandlautsprecher, 4 Zoll"
+            ],
+            [
+              "Impedenza dichiarata",
+              "8 Ohm"
+            ],
+            [
+              "Potenza dichiarata dal venditore",
+              "150 W Max - dato commerciale del driver singolo"
+            ],
+            [
+              "Sensibilita dichiarata",
+              "82 dB SPL @ 1 W / 1 m"
+            ],
+            [
+              "Banda dichiarata",
+              "66 Hz - 9 kHz"
+            ],
+            [
+              "Diametro esterno",
+              "112,3 mm"
+            ],
+            [
+              "Foro di montaggio",
+              "92 mm"
+            ],
+            [
+              "Profondita di montaggio",
+              "60 mm"
+            ],
+            [
+              "Profondita totale",
+              "65,5 mm"
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 11
+    },
+    {
+      "id": "argomento-12",
+      "title": "Il grafico dichiarato del woofer",
+      "images": [
+        {
+          "src": "/immagini/progetti/componenti/grafico-vonyx.webp",
+          "caption": "Grafico dichiarato del Vonyx WK10, fonte commerciale Vonyx. Condizioni di prova non documentate nel materiale ricevuto."
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il grafico commerciale mostra una risposta larga e non perfettamente piatta, con un andamento che entra nella banda utile attorno a 66 Hz, una regione centrale relativamente regolare e una marcata variazione nelle alte frequenze prima della fine banda dichiarata. Non sono indicati chiaramente baffle, tensione di misura, smoothing, distanza, ambiente o soglia di distorsione. Per questo il grafico e utile come orientamento, non come certificazione completa."
+        }
+      ],
+      "sourcePage": 12
+    },
+    {
+      "id": "argomento-13",
+      "title": "Grafico dichiarato e misura reale",
+      "images": [
+        {
+          "src": "/immagini/progetti/componenti/grafico-vonyx.webp",
+          "caption": "Grafico dichiarato del driver Vonyx WK10."
+        },
+        {
+          "src": "/immagini/progetti/componenti/misura-rew-woofer.webp",
+          "caption": "La mia misura REW: microfono a circa 1 cm dal cono, woofer nel cabinet e collegato al crossover."
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La coerenza e qualitativa, non numerica. Il progetto utilizza il driver in modo compatibile con la sua vocazione a larga banda, ma il sistema completo ha un tweeter e un crossover: non e corretto dire che la risposta misurata della Music Essence sia il grafico del WK10."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Banda bassa",
+              "La pagina del venditore dichiara 66 Hz. La misura nearfield mostra energia sotto tale zona, ma non consente di dichiarare una estensione calibrata a 40 Hz: la scala assoluta, il box, la stanza e il livello non sono normalizzati rispetto al grafico dichiarato del driver."
+            ],
+            [
+              "Sensibilita",
+              "82 dB @ 1 W / 1 m e una dichiarazione del venditore. Le schermate REW non documentano 1 W elettrico, microfono calibrato o tensione esatta: non possono confermare o smentire quel numero."
+            ],
+            [
+              "Medie e alte",
+              "Il grafico dichiarato del driver arriva fino a 9 kHz per il driver nudo. Nella Music Essence, sopra la zona di crossover il segnale e condiviso/consegnato al tweeter: la curva a 1 m non puo essere attribuita solo al woofer."
+            ],
+            [
+              "Conclusione onesta",
+              "Le misure non contraddicono il carattere generale dichiarato: un piccolo driver con banda utile ampia. Non permettono pero una sovrapposizione quantitativa seria senza dati grezzi, misura separata del driver e procedura calibrata."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 13
+    },
+    {
+      "id": "argomento-14",
+      "title": "Tweeter e crossover",
+      "images": [
+        {
+          "src": "/immagini/progetti/componenti/tweeter.webp",
+          "caption": "Tweeter selezionato"
+        },
+        {
+          "src": "/immagini/progetti/componenti/crossover.webp",
+          "caption": "Crossover passivo a due vie"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il tweeter rappresenta la parte che determina in larga misura la brillantezza e l aria del diffusore. Il suo valore nominale di 6 Ohm, unito a un midwoofer nominalmente da 8 Ohm e a un crossover commerciale, rende impossibile calcolare a tavolino il livello finale senza misure individuali."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Questo spiega perche le misure 0, 15 e 30 gradi sono fondamentali: non bastano per ricostruire l intero filtro, ma permettono di verificare se il sistema presenta una grossa cancellazione in area di incrocio o un crollo anomalo fuori asse. Nelle curve fornite non si osserva un buco macroscopico largo vicino alla zona dichiarata di 2,9 kHz."
+        }
+      ],
+      "sourcePage": 14
+    },
+    {
+      "id": "argomento-15",
+      "title": "AIYIMA A80 e alimentazione",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-04b4e140ffcd.webp",
+          "caption": "AIYIMA A80 e alimentazione · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-895d7da04b94.webp",
+          "caption": "AIYIMA A80 e alimentazione · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Alimentatore usato",
+              "48 V / 5 A"
+            ],
+            [
+              "Disponibilita DC teorica",
+              "48 V x 5 A = 240 W lato alimentatore. Non e una potenza audio per canale."
+            ],
+            [
+              "Intervallo alimentazione ufficiale",
+              "24 - 48 V"
+            ],
+            [
+              "Impedenze supportate ufficialmente",
+              "4 - 8 Ohm"
+            ],
+            [
+              "Potenza massima ufficiale",
+              "300 W x 2 a 4 Ohm - dichiarazione del produttore, dipendente dalle condizioni di test e dall alimentazione."
+            ],
+            [
+              "Ingressi ufficiali",
+              "RCA, TRS, USB PC, ottico, coassiale, Bluetooth."
+            ],
+            [
+              "Controlli tono ufficiali",
+              "Bassi e alti regolabili fino a +/-10 dB. Le mie misure sono state fatte con bassi 0 dB e alti 0 dB."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 15
+    },
+    {
+      "id": "argomento-16",
+      "title": "Potenza disponibile e limiti del diffusore",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La catena delle mie prove parte dalla sorgente Bluetooth, con PCM 44,1 kHz visualizzato sull’AIYIMA A80. L’amplificatore è alimentato a 48 V / 5 A, con controlli di tono a zero; il microfono e REW acquisiscono la risposta delle Music Essence nella stanza."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il calcolo 48 V x 5 A = 240 W e corretto come limite di potenza continua disponibile dall alimentatore in corrente continua. Non significa 240 W su ciascun canale, ne significa che il diffusore riceve automaticamente quella potenza. Ci sono perdite di conversione, limiti del circuito, musica non continua, impedenza variabile del carico e impostazioni di volume."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per questa Music Essence, il dato piu importante non e inseguire la potenza massima dell A80. La targhetta del diffusore riporta 15 W nominali e 50 W massimi, mentre il woofer e un 4 pollici in box chiuso. Il limite pratico puo arrivare prima dal movimento del cono nelle basse frequenze che non dall amplificatore."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La sessione di misura flat e il riferimento. Evitare Bass +5 dB a volume alto: un boost di 5 dB richiede circa 3,16 volte la potenza nella banda equalizzata e puo aumentare molto l escursione del woofer. Se compare un colpo secco o un rumore meccanico, ridurre subito volume e boost."
+        }
+      ],
+      "sourcePage": 16
+    },
+    {
+      "id": "argomento-17",
+      "title": "Setup e metodo REW",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-f48157d819af.webp",
+          "caption": "Setup e metodo REW · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-8a5aa6558e56.webp",
+          "caption": "Setup e metodo REW · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Ambiente",
+              "Stanza domestica reale, non camera anecoica."
+            ],
+            [
+              "Sorgente",
+              "Bluetooth verso AIYIMA A80; il display documenta BT e PCM 44,1 kHz."
+            ],
+            [
+              "Tono A80",
+              "Bass 0 dB, Treble 0 dB per la nuova sessione flat."
+            ],
+            [
+              "Diffusore singolo",
+              "Cassa destra, microfono a 1 m, 0 / 15 / 30 gradi."
+            ],
+            [
+              "Nearfield",
+              "Microfono a circa 1 cm dal woofer."
+            ],
+            [
+              "Coppia stereo",
+              "L+R in zona di ascolto a circa 2,8 - 2,9 m."
+            ],
+            [
+              "Limite fase",
+              "Con Bluetooth e senza timing reference documentata, la fase assoluta non viene usata per conclusioni sul crossover."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 17
+    },
+    {
+      "id": "argomento-18",
+      "title": "Come leggere le misure",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "SPL a 1 m: mostra la risposta del sistema cassa + driver + crossover + prime riflessioni della stanza. E utile per capire tendenza tonale, eventuali buchi grandi e comportamento fuori asse."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nearfield a 1 cm: e utile soprattutto sotto circa 300 - 500 Hz. A frequenze piu alte non rappresenta piu il suono percepito a distanza, perche il microfono legge una piccola zona del cono."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Waterfall e spectrogram: mostrano come l energia decade nel tempo. In una stanza, code e creste sotto alcune centinaia di Hz possono venire dalla stanza tanto quanto dal diffusore."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Zona ascolto L+R: e la misura piu vicina all esperienza reale, ma anche la piu influenzata da pavimento, pareti, mobili, interferenza tra canali e posizione della testa. Non bisogna equalizzare ciecamente ogni buco stretto."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Il collegamento Bluetooth ha un limite importante: un ritardo Bluetooth anche inferiore a 40 ms non modifica automaticamente la curva di ampiezza se la catena e stabile, ma rende meno affidabili le interpretazioni basate sul tempo assoluto. Per questo mi concentro su SPL, tendenza di dispersione e decadimenti qualitativi, non conclusioni di fase millimetriche."
+        }
+      ],
+      "sourcePage": 18
+    },
+    {
+      "id": "argomento-19",
+      "title": "Risposta a 1 m: 0°",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-9aef205303ee.webp",
+          "caption": "Risposta a 1 m: 0°"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La curva mostra un sistema con energia crescente dalla regione bassa verso una zona di lavoro piu stabile, diverse ondulazioni tra basso e medio e una presenza progressiva nella gamma alta. La lettura piu forte e il carattere aperto della zona 4 - 10 kHz, coerente con le mie impressioni di ascolto: brillante, dettagliato e favorevole a voce e strumenti."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tra circa 100 Hz e 1 kHz sono visibili picchi e avvallamenti. A 1 m in una stanza non possono essere attribuiti automaticamente al solo mobile: baffle step, pavimento, tavolo, pareti e riflessioni precoci partecipano alla curva. Il punto utile e che non compare una cancellazione enorme e larga che renda il progetto inutilizzabile."
+        }
+      ],
+      "sourcePage": 19
+    },
+    {
+      "id": "argomento-20",
+      "title": "Dispersione: 15° e 30°",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-b38d5f021181.webp",
+          "caption": "Dispersione: 15° e 30° · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-33cc135bb747.webp",
+          "caption": "Dispersione: 15° e 30° · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le curve a 15 e 30 gradi mantengono la stessa impronta generale della misura frontale. Nelle immagini non appare un crollo largo e immediato della gamma alta, ne un grande buco nel territorio dell incrocio dichiarato. Questo e un segnale incoraggiante per l uso desktop o in salotto: piccoli spostamenti laterali dell ascoltatore non dovrebbero cambiare drasticamente il carattere."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Questa non e una misura polare anecoica. Per disegnare una vera mappa di dispersione servirebbero molti angoli, distanze controllate e ambiente/gating piu rigorosi. Pero, a livello pratico, conferma che l impostazione della cassa non sembra essere iper-direttiva nel solo intervallo 0 - 30 gradi osservato."
+        }
+      ],
+      "sourcePage": 20
+    },
+    {
+      "id": "argomento-21",
+      "title": "Woofer nearfield a 1 cm",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-5b0851d1abf2.webp",
+          "caption": "Woofer nearfield a 1 cm"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La misura nearfield riduce molto l influenza della stanza nella regione bassa. Conferma che il 4 pollici in box chiuso non e privo di contenuto nella gamma grave; esiste energia utile nelle decine di Hz e nella zona 50 - 150 Hz."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Non sarebbe corretto trasformare questa immagine in un claim del tipo “riproduce 40 Hz”. Per farlo servirebbero calibrazione, scala assoluta, merge con misura farfield e criteri di attenuazione. La conclusione corretta e piu prudente: rispetto alle dimensioni, il sistema non appare magro; il limite rimane la pressione massima e l escursione quando si chiede troppo basso a volume elevato."
+        }
+      ],
+      "sourcePage": 21
+    },
+    {
+      "id": "argomento-22",
+      "title": "Distorsione",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-70eda458358b.webp",
+          "caption": "Distorsione"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La schermata e utile per conservare la sessione, ma non contiene - nella forma esportata - una lettura abbastanza chiara delle curve THD, seconda armonica e terza armonica per dichiarare percentuali precise. Per rispetto dei dati, non attribuisco alla Music Essence un valore di THD che non sia visibile in modo inequivocabile."
+        },
+        {
+          "kind": "paragraph",
+          "text": "L assenza di un numero non significa che la misura sia inutile. Al contrario, la prova e coerente con il comportamento previsto: un piccolo driver lavora tranquillamente a livello moderato e puo entrare in difficolta se viene spinto con molta energia sotto la sua banda comoda, soprattutto con bass boost. Una percentuale rigorosa richiederebbe un’esportazione con THD, H2 e H3 chiaramente leggibili."
+        }
+      ],
+      "sourcePage": 22
+    },
+    {
+      "id": "argomento-23",
+      "title": "Waterfall della singola cassa",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-5b143a68947d.webp",
+          "caption": "Waterfall della singola cassa"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il waterfall mostra che le basse frequenze e parte della medio-bassa conservano energia piu a lungo della gamma superiore. Questo e normale in un ambiente domestico: pareti, pavimento e mobili aumentano le modalita della stanza, soprattutto sotto qualche centinaio di Hz."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Non si osserva, dallo screenshot, un unico picco strettissimo che permetta di accusare con sicurezza il cabinet di una risonanza grave evidente. La lettura corretta resta prudente: i decadimenti sono un risultato combinato di altoparlante, box e stanza."
+        }
+      ],
+      "sourcePage": 23
+    },
+    {
+      "id": "argomento-24",
+      "title": "Spettrogramma della singola cassa",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-198bcd5bcc28.webp",
+          "caption": "Spettrogramma della singola cassa"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Lo spectrogram conferma la presenza di energia continua nella parte medio-alta, dove la Music Essence ha il suo carattere piu evidente. Sotto circa 200 Hz la figura mostra strutture piu lente e irregolari, compatibili con la stanza e con una cassa piccola che interagisce con superfici vicine."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Waterfall e spectrogram non raccontano “quanto basso fa” una cassa: raccontano quanto tempo l energia resta. In questa lettura, la Music Essence appare piu forte per dettaglio e presenza che per sub-basso."
+        }
+      ],
+      "sourcePage": 24
+    },
+    {
+      "id": "argomento-25",
+      "title": "Risposta stereo a 2,8–2,9 m",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-0cd798b75277.webp",
+          "caption": "Risposta stereo a 2,8–2,9 m"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Questa e la misura che interessa maggiormente per l esperienza quotidiana. Non e piatta come una prova in campo libero, e non deve esserlo: due diffusori nella stanza producono rinforzi e cancellazioni che dipendono da distanza tra diffusori, pareti, pavimento, mobili e posizione del microfono."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La curva mantiene una presenza alta da circa 4 kHz in poi, mentre sotto 1 kHz diventa piu frastagliata. Non e un invito ad alzare o abbassare ogni singola irregolarita: molti buchi stretti sono cancellazioni geometriche. Un equalizzatore che prova a riempirli puo far lavorare troppo woofer e amplificatore senza risolvere il problema nel punto reale di ascolto."
+        }
+      ],
+      "sourcePage": 25
+    },
+    {
+      "id": "argomento-26",
+      "title": "Waterfall stereo",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-9a77b57dcdb0.webp",
+          "caption": "Waterfall stereo"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Con due casse e quasi tre metri di distanza, il grafico rappresenta soprattutto il sistema completo: altoparlanti, stanza e posizionamento. Le code nei bassi e nella medio-bassa sono da considerare normali in questo contesto."
+        },
+        {
+          "kind": "paragraph",
+          "text": "La misura e molto utile per decidere interventi pratici: spostare anche poco le casse o il punto d ascolto, cambiare la distanza dal muro o ruotare leggermente i diffusori puo cambiare piu di molti dB applicati con equalizzazione."
+        }
+      ],
+      "sourcePage": 26
+    },
+    {
+      "id": "argomento-27",
+      "title": "Spettrogramma stereo",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-32a5939356bf.webp",
+          "caption": "Spettrogramma stereo"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il grafico conferma che il sistema mantiene energia utile anche con ascolto lontano. Le regioni basse sono condizionate dalla stanza; la gamma medio-alta resta presente e spiega perche il progetto mantiene un carattere aperto anche nel punto d ascolto."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Per l’ascolto reale, parto dal posizionamento e dalla rotazione dei diffusori verso il punto d’ascolto. Solo dopo considero correzioni molto leggere e larghe, evitando boost profondi nei buchi stretti sotto 300 Hz."
+        }
+      ],
+      "sourcePage": 27
+    },
+    {
+      "id": "argomento-28",
+      "title": "Volume e controlli di tono",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il piccolo box chiuso protegge in parte il woofer rispetto a un reflex non accordato, ma non rende impossibile il fine corsa. Il cono puo raggiungere limiti meccanici quando la musica contiene basse frequenze intense o quando il tone control aggiunge molto contenuto sotto la regione naturale del sistema."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Profilo di riferimento",
+              "Bass 0 dB / Treble 0 dB. E la condizione delle nuove misure e il punto da cui partire."
+            ],
+            [
+              "Se il suono e troppo pungente",
+              "Treble -1 dB. Le misure suggeriscono una presenza importante nella parte alta; una piccola riduzione puo essere preferibile a EQ aggressive."
+            ],
+            [
+              "Se si ascolta piano",
+              "Bass +1 dB puo essere provato con moderazione. Non e una prescrizione: ascoltare eventuali rumori meccanici."
+            ],
+            [
+              "Da evitare",
+              "Bass +5 dB con volume alto. Il boost aumenta forte richiesta di potenza ed escursione sulle basse frequenze."
+            ],
+            [
+              "Segnale di stop",
+              "Colpo secco, rumore di fondo corsa, raschiamento o vibrazione anomala. Ridurre subito volume; non continuare lo sweep."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 28
+    },
+    {
+      "id": "argomento-29",
+      "title": "Ascolto e generi musicali",
+      "images": [
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-24d78edf8d71.webp",
+          "caption": "Ascolto e generi musicali · dettaglio 1"
+        },
+        {
+          "src": "/immagini/progetti/articolo/music-essence-tallava-e54af45f71a3.webp",
+          "caption": "Ascolto e generi musicali · dettaglio 2"
+        }
+      ],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ho trovato il progetto particolarmente convincente con musica classica, chill, jazz, sax, percussioni, voci e registrazioni audiophile. Questi generi sfruttano la presenza della parte media e alta, la capacita di rendere evidenti i transienti e una scena che migliora quando ci si allontana dalla distanza troppo ravvicinata."
+        },
+        {
+          "kind": "paragraph",
+          "text": "House, techno e musica con richiesta di sub-basso continuo non sono il territorio naturale di un 4 pollici chiuso da 5 - 6 litri teorici. Puo riprodurli, ma non deve essere giudicato come se dovesse sostituire un subwoofer o un grande reflex."
+        }
+      ],
+      "sourcePage": 29
+    },
+    {
+      "id": "argomento-30",
+      "title": "Posizionamento",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le misure fuori asse non mostrano un collasso immediato fino a 30 gradi. Questo lascia libert a di sperimentare: una leggera convergenza verso il punto d ascolto puo migliorare immagine e precisione; una maggiore apertura puo ammorbidire la percezione dell alto."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Distanza dal muro posteriore",
+              "Provare piccoli spostamenti; 5 - 15 cm possono cambiare il basso percepito in una stanza."
+            ],
+            [
+              "Altezza",
+              "Portare il tweeter circa all altezza dell orecchio durante l ascolto seduto, quando possibile."
+            ],
+            [
+              "Toe-in",
+              "Iniziare con circa 10 - 15 gradi verso l ascoltatore. Le misure 15 e 30 gradi suggeriscono che non serve una precisione estrema."
+            ],
+            [
+              "Zona ascolto",
+              "Non stare esattamente contro una parete posteriore. Anche un piccolo spostamento avanti/indietro puo cambiare i buchi bassi."
+            ],
+            [
+              "Test pratico",
+              "Per decidere, ascoltare voce parlata, piano, sax e un brano con basso controllato. Non solo sweep o rumore rosa."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 30
+    },
+    {
+      "id": "argomento-31",
+      "title": "Idee per la Mk2",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ho considerato anche come far evolvere questa costruzione. La mia idea per una Mk2 è di mantenere il linguaggio: mobile non rettangolare, superfici curve, baffle nero, retro strutturato e dimensione ancora compatta. La crescita prevista e controllata, non un ritorno alla scala della Legendary."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Volume",
+              "Un cabinet leggermente piu grande consentirebbe maggiore margine al driver principale."
+            ],
+            [
+              "Driver",
+              "Possibile passaggio a un woofer piu grande, mantenendo l obiettivo di dettaglio e ascolto ravvicinato."
+            ],
+            [
+              "Reflex",
+              "Possibile solo con parametri Thiele/Small del driver, volume netto e condotto calcolati insieme. Non come aggiunta estetica."
+            ],
+            [
+              "Tre vie",
+              "Possibilita aperta ma non obbligatoria. In un mobile piccolo, una buona due vie puo essere piu coerente di un tre vie compresso."
+            ],
+            [
+              "Misure future",
+              "Impedance sweep, misure dei driver separati, media multi-posizione, test di distorsione con curve THD chiaramente esportate."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 31
+    },
+    {
+      "id": "argomento-32",
+      "title": "Scheda tecnica completa",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Produttore / progetto",
+              "Sala Acoustics - Sala Projects"
+            ],
+            [
+              "Modello",
+              "Music Essence"
+            ],
+            [
+              "Edizione",
+              "Tallava Edition"
+            ],
+            [
+              "Tipo",
+              "Diffusore passivo compatto a due vie"
+            ],
+            [
+              "Caricamento",
+              "Box chiuso"
+            ],
+            [
+              "Dimensioni",
+              "307 H x 130 L x 200 P mm"
+            ],
+            [
+              "Pareti",
+              "10 mm dichiarati"
+            ],
+            [
+              "Driver principale",
+              "Vonyx WK10 4 pollici, 8 Ohm, membrana dichiarata Kevlar"
+            ],
+            [
+              "Tweeter",
+              "Cupola a film/seta, 6 Ohm, 30 W dichiarati"
+            ],
+            [
+              "Crossover",
+              "Commerciale 2 vie, 2.900 Hz dichiarati"
+            ],
+            [
+              "Impedenza di sistema",
+              "8 Ohm nominali in targhetta"
+            ],
+            [
+              "Potenza di sistema",
+              "15 W nominali / 50 W massimi in targhetta"
+            ],
+            [
+              "Amplificatore di riferimento",
+              "AIYIMA A80"
+            ],
+            [
+              "Alimentatore sessione",
+              "48 V / 5 A - 240 W DC teorici lato PSU"
+            ],
+            [
+              "Sorgente di misura",
+              "Bluetooth; display A80 con BT / PCM 44,1 kHz"
+            ],
+            [
+              "Software",
+              "REW"
+            ],
+            [
+              "Misure disponibili",
+              "0 / 15 / 30 gradi a 1 m; nearfield 1 cm; distortion; waterfall; spectrogram; L+R in zona ascolto"
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 32
+    },
+    {
+      "id": "argomento-33",
+      "title": "Conclusioni tecniche",
+      "images": [],
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il valore di questo progetto non e fingere di essere un diffusore"
+        },
+        {
+          "kind": "paragraph",
+          "text": "industriale perfettamente standardizzato. E documentare un percorso"
+        },
+        {
+          "kind": "paragraph",
+          "text": "reale: idea, stampa 3D, compromessi, componenti accessibili, prova in"
+        },
+        {
+          "kind": "paragraph",
+          "text": "stanza, ascolto critico e volont a di migliorare. Questa e la Music"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Essence."
+        },
+        {
+          "kind": "table",
+          "rows": [
+            [
+              "Possiamo dire",
+              "La Music Essence e un due vie compatto, brillante e dettagliato; le curve a 0 / 15 / 30 gradi non mostrano un crollo evidente fuori asse; il box chiuso e coerente con il formato."
+            ],
+            [
+              "Possiamo dire",
+              "In stanza, a circa 2,8 - 2,9 m, il sistema mantiene energia e carattere ma la curva diventa piu influenzata dall ambiente, come normale."
+            ],
+            [
+              "Non possiamo dire",
+              "Sensibilita certificata esatta, risposta anecoica, F3 preciso, THD percentuale rigorosa o impedenza minima, perche non sono state fatte misure calibrate dedicate."
+            ],
+            [
+              "Non possiamo dire",
+              "Che il grafico dichiarato del driver sia identico alla risposta del sistema: il driver e montato in una cassa, filtrato e affiancato da un tweeter."
+            ],
+            [
+              "Interpretazione",
+              "Il carattere percepito e coerente con quanto misurato: presenza alta, dettaglio, vocazione per voci e strumenti. Il basso e presente per dimensioni, ma richiede gestione responsabile del volume e del tone control."
+            ]
+          ]
+        }
+      ],
+      "sourcePage": 33
+    }
+  ],
+  "retro-di-testa-vox": [
+    {"id":"vox-origine","title":"Perché ho voluto costruire VOX","images":[{"src":"/immagini/articoli/vox/vox-ui-conversazione.svg","caption":"La schermata principale di VOX, ricostruita fedelmente dalla build 1.0.3: chat testuale, conversazione vocale e stato dell’elaborazione locale."}],"blocks":[{"kind":"paragraph","text":"Non volevo semplicemente installare un altro chatbot. Volevo un assistente che sentissi mio, capace di funzionare sul Mac, rispondere a voce e lavorare sui miei documenti senza dipendere continuamente da un servizio esterno."},{"kind":"paragraph","text":"Da questa esigenza è nato Retro di Testa VOX. Il progetto riunisce conversazione testuale e vocale, cronologia locale, memoria personale, documenti, progetti e agenda in una sola applicazione macOS."},{"kind":"paragraph","text":"La versione raccontata qui è la 1.0.3: una build privata di collaudo, non un prodotto commerciale e non una promessa di perfezione."}],"sourcePage":1},
+    {"id":"vox-funzionamento","title":"Come funziona: dalla voce alla risposta","images":[{"src":"/immagini/articoli/vox/vox-pipeline.svg","caption":"Il percorso locale: Whisper trascrive, Dolphin elabora e Kokoro trasforma la risposta in voce."}],"blocks":[{"kind":"paragraph","text":"VOX unisce tre motori. Whisper base multilingue trasforma la voce italiana in testo. Dolphin 3.0 Llama 3.1 8B, in formato GGUF Q4_K_M, genera la risposta. Kokoro produce le voci neurali italiane Sara e Nicola; in alternativa si può usare Alice di macOS."},{"kind":"paragraph","text":"Il modello linguistico gira localmente tramite llama.cpp e sfrutta Metal sui Mac Apple Silicon. La build occupa circa 5,1 GB e consiglia 16 GB di memoria. Dopo l’installazione dei componenti, la conversazione non richiede un servizio cloud."}],"sourcePage":2},
+    {"id":"vox-interfaccia","title":"La grafica: scura, semplice e riconoscibile","images":[{"src":"/immagini/articoli/vox/vox-hero.svg","caption":"La direzione grafica di VOX: fondo scuro, scanner rosso e forma d’onda reattiva."},{"src":"/immagini/articoli/vox/vox-ui-conversazione.svg","caption":"Nel pannello Conversazione si sceglie tra chat testuale e voce, si interrompe la risposta e si controlla la lettura ad alta voce."}],"blocks":[{"kind":"paragraph","text":"Non desideravo una finestra anonima. Ho scelto un’interfaccia scura con scanner rosso, forma d’onda e una navigazione laterale. L’atmosfera richiama gli assistenti della fantascienza, ma il disegno segue l’identità di Retro di Testa."},{"kind":"paragraph","text":"La forma d’onda reagisce ai campioni del microfono e alla sintesi vocale. Chiudendo la finestra, VOX può restare nella barra dei menu e riaprirsi quando serve."}],"sourcePage":3},
+    {"id":"vox-modelli-voci","title":"Modelli e voci: scegliere come pensa e come parla","images":[{"src":"/immagini/articoli/vox/vox-ui-modelli.svg","caption":"Il pannello Modelli e voci: modello installato, catalogo GGUF, avviso sulla RAM e scelta della voce."}],"blocks":[{"kind":"paragraph","text":"Il pannello permette di scegliere il modello locale, importare file GGUF e vedere un catalogo di alternative da 4B, 7B, 8B e 14B. VOX mostra dimensioni, provenienza e licenza dichiarata, avvertendo quando un modello può superare la memoria disponibile."},{"kind":"paragraph","text":"Sara e Nicola sono voci Kokoro locali e sono state sintetizzate realmente. Alice è invece una voce del sistema macOS. La qualità va giudicata ascoltandola: nessuna voce viene descritta come indistinguibile da una persona."}],"sourcePage":4},
+    {"id":"vox-documenti","title":"Documenti: creare, leggere e preparare un’analisi","images":[{"src":"/immagini/articoli/vox/vox-ui-documenti.svg","caption":"Il pannello Documenti: editor locale, invio del testo alla chat ed esportazione nei formati principali."}],"blocks":[{"kind":"paragraph","text":"L’editor apre o scrive testo ed esporta PDF, DOCX, XLSX e TXT. Usa ultima risposta trasferisce il contenuto della conversazione nell’editor, mentre Analizza nella chat prepara la richiesta per il modello locale."},{"kind":"paragraph","text":"Il supporto è volutamente essenziale: testo e tabelle semplici. Non sostituisce Word o Excel, non preserva impaginazioni complesse e non ricalcola le formule. L’analisi usa i primi 6.000 caratteri del documento, mentre l’esportazione comprende tutto il testo presente nell’editor."}],"sourcePage":5},
+    {"id":"vox-memoria-agenda","title":"Cronologia, memoria, progetti e agenda","images":[],"blocks":[{"kind":"paragraph","text":"Le conversazioni vengono salvate automaticamente sul Mac. La cronologia permette ricerca ed eliminazione, mentre la memoria personale è separata: cancellare una chat non elimina le informazioni salvate nella memoria."},{"kind":"paragraph","text":"I backup JSON comprendono chat, memoria, progetti e agenda, ma non modelli, voci, impostazioni e documenti. I dati non sono cifrati dall’app: la protezione dipende dall’account e dal disco del Mac."},{"kind":"paragraph","text":"L’agenda interna può copiare gli appuntamenti nel Calendario di macOS dopo l’autorizzazione dell’utente. La chat non crea eventi da sola e i promemoria interni funzionano soltanto mentre VOX è aperto."}],"sourcePage":6},
+    {"id":"vox-prove","title":"Che cosa è stato verificato davvero","images":[],"blocks":[{"kind":"paragraph","text":"La chat testuale con Dolphin è stata avviata dall’interfaccia e ha risposto correttamente a domande semplici, compresa la data corrente e un calcolo. La conversazione è stata salvata e ritrovata dopo la riapertura."},{"kind":"paragraph","text":"È stata provata anche una pipeline locale completa: Sara ha generato una frase italiana, Whisper l’ha trascritta e Dolphin ha prodotto una risposta coerente. Sono stati generati e riletti PDF, DOCX e XLSX con accenti, simboli e tabelle semplici."},{"kind":"table","rows":[["Chat testuale","Provata nell’app con Dolphin incluso"],["Voce italiana","Pipeline locale verificata; lunghe conversazioni reali ancora da collaudare"],["Sara e Nicola","WAV reali generati e non vuoti"],["Documenti","PDF, DOCX e XLSX semplici generati e riletti"],["Firma applicazione","Firma locale ad hoc verificata; nessuna notarizzazione Apple"]]}],"sourcePage":7},
+    {"id":"vox-limiti","title":"I limiti che non voglio nascondere","images":[],"blocks":[{"kind":"paragraph","text":"La pausa automatica è regolabile da 1,5 a 6 secondi. Se la voce scende sotto la soglia del microfono, VOX può interpretarla come silenzio e iniziare troppo presto l’elaborazione. Durante la risposta il microfono viene sospeso: non è ancora una telefonata naturale con cancellazione dell’eco."},{"kind":"paragraph","text":"Ehi Vox è sperimentale e usa Whisper, non un motore wake word dedicato a basso consumo. Voice Learning calibra la soglia del rumore: non addestra i pesi e non riconosce biometricamente la persona."},{"kind":"paragraph","text":"La build è privata, non notarizzata e verificata sul Mac Apple Silicon usato durante lo sviluppo. Compatibilità generale, autonomia, picco reale di memoria, rumore ambientale e conversazioni prolungate richiedono altre prove."}],"sourcePage":8},
+    {"id":"vox-verdetto","title":"Il mio giudizio e il futuro di VOX","images":[],"blocks":[{"kind":"paragraph","text":"VOX dimostra che un assistente personale locale non è più soltanto un esperimento da riga di comando. Può avere una vera interfaccia, ascoltare, parlare, archiviare conversazioni e creare documenti."},{"kind":"paragraph","text":"Il prossimo passo non è aggiungere cento funzioni, ma rendere solide quelle presenti: conversazione senza tagli, wake word affidabile, installazione più semplice, misure reali delle prestazioni e verifica completa delle licenze."},{"kind":"paragraph","text":"Il mio giudizio attuale: VOX è una base concreta e personale, non ancora un assistente definitivo. Funziona abbastanza da dimostrare l’idea e ha ancora abbastanza limiti da rendere necessario continuare a provarlo."}],"sourcePage":9}
+  ]
+}

@@ -1,0 +1,4 @@
+---
+import { projects } from '../lib/projects';
+---
+<div class="projects-grid">{projects.map((p,i)=><a class="project-card" href={`/progetti/${p.slug}/`}><div class="project-card-photo"><img src={p.image} alt={`Il diffusore Sala Acoustics ${p.name} costruito da Marco Sala`} width="1050" height="1400" loading="lazy"/><span class="project-number">0{i+1}</span></div><div class="project-card-copy"><p class="eyebrow">{p.category}</p><h2>{p.name}<span aria-hidden="true">↗</span></h2><p class="project-subtitle">{p.subtitle}</p><p>{p.description}</p><div class="project-tags"><span>{p.type}</span><span>{p.cabinet}</span></div><span class="text-link">Dentro il progetto →</span></div></a>)}</div>

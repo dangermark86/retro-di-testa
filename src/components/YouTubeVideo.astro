@@ -1,0 +1,34 @@
+---
+interface Props { id: string; title: string; thumbnail?: boolean; }
+const {id,title,thumbnail=false}=Astro.props;
+---
+{thumbnail && <img class="youtube-thumbnail" src="/immagini/youtube-sigla.svg" alt={`Copertina della sigla: ${title}`} width="1280" height="720" loading="lazy" referrerpolicy="no-referrer" />}
+<div class="youtube-player" data-video-id={id} data-video-title={title}>
+ <div class="youtube-placeholder"><span class="youtube-play-icon" aria-hidden="true">▶</span><p class="eyebrow">RETRO DI TESTA · YOUTUBE</p><h3>{title}</h3><button type="button" class="button youtube-load">Guarda il video</button><p class="youtube-disclosure">Premendo “Guarda il video” acconsenti al caricamento di YouTube (Google), che riceverà dati come il tuo indirizzo IP e potrà utilizzare tecnologie di archiviazione. Puoi revocare questa scelta con “Disattiva il video”. <a href="/privacy/">Informativa privacy</a>.</p></div>
+</div>
+<button type="button" class="youtube-unload" hidden>Disattiva il video</button>
+<p class="youtube-direct"><a href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer">Apri il video su YouTube ↗</a></p>
+<script>
+ function setupVideos(){
+  document.querySelectorAll<HTMLElement>('.youtube-player').forEach(player=>{
+   const placeholder=player.innerHTML;
+   const unload=player.nextElementSibling as HTMLButtonElement;
+   const button=player.querySelector<HTMLButtonElement>('.youtube-load');
+   button?.addEventListener('click',()=>{
+    const id=player.dataset.videoId;
+    if(!id || !/^[A-Za-z0-9_-]{11}$/.test(id))return;
+    const frame=document.createElement('iframe');
+    frame.src=`https://www.youtube-nocookie.com/embed/${id}`;
+    frame.title=player.dataset.videoTitle || 'Video di Retro di testa';
+    frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen=true;
+    frame.referrerPolicy='strict-origin-when-cross-origin';
+    player.replaceChildren(frame);
+    if(unload){unload.hidden=false;unload.onclick=()=>{player.innerHTML=placeholder;unload.hidden=true;setupVideos();};}
+    frame.focus();
+   },{once:true});
+  });
+ }
+ setupVideos();
+ document.addEventListener('astro:page-load',setupVideos);
+</script>

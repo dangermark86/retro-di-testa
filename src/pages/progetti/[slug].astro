@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectStory from '../../components/ProjectStory.astro';
+import ArticleActions from '../../components/ArticleActions.astro';
+import Comments from '../../components/Comments.astro';
+import ContentTracker from '../../components/ContentTracker.astro';
+import { projects } from '../../lib/projects';
+export function getStaticPaths(){ return projects.filter(project => project.slug !== 'aurora-mtm-cassa-centrale-stampata-3d').map(project => ({params:{slug:project.slug},props:{project}})); }
+const {project:p}=Astro.props;
+const other=projects.find(x=>x.slug!==p.slug)!;
+const isVox=p.slug==='retro-di-testa-vox';
+---
+<Base title={`${p.name} — I miei progetti · Retro di testa`} description={p.description}><article class="wrap project-page"><a class="text-link" href="/progetti/">← Tutti i progetti</a><header class="project-hero"><div><p class="eyebrow">{isVox?'RETRO DI TESTA LAB · MARCO SALA':'SALA ACOUSTICS · MARCO SALA'}</p><h1>{p.name}</h1><p class="project-hero-subtitle">{p.subtitle}</p><p class="lead">{p.description}</p><div class="project-tags"><span>{p.type}</span><span>{p.cabinet}</span></div><a class="text-link" href="#costruzione">{isVox?'Idea, funzionamento e prove ↓':'Costruzione, ascolto e tutte le prove ↓'}</a></div><figure><img src={p.image} alt={isVox?'Interfaccia di Retro di Testa VOX':`Vista del diffusore ${p.name}`} width="1050" height="1400"/><figcaption>{isVox?'Retro di Testa VOX, assistente locale per macOS.':`Il mio diffusore ${p.name}.`}</figcaption></figure></header><dl class="project-facts"><div><dt>{isVox?'Tipo':'Configurazione'}</dt><dd>{p.type}</dd></div><div><dt>{isVox?'Piattaforma':'Cabinet'}</dt><dd>{p.cabinet}</dd></div><div><dt>{isVox?'Tecnologia':'Costruzione'}</dt><dd>{p.material}</dd></div><div><dt>{isVox?'Dimensione':'Dimensioni esterne'}</dt><dd>{p.dimensions}</dd></div></dl><ProjectStory slug={p.slug}/><ArticleActions id={`progetto-${p.slug}`} title={p.name}/><Comments id={`progetto-${p.slug}`} title={p.name} type="Progetto"/><a class="project-next" href={`/progetti/${other.slug}/`}><small>UN ALTRO PROGETTO DAL MIO BANCO</small><strong>{other.name} →</strong><span>{other.subtitle}</span></a><ContentTracker id={`progetto-${p.slug}`} title={p.name} type="Progetto"/></article></Base>

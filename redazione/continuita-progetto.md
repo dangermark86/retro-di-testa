@@ -1,0 +1,9 @@
+# Continuare il lavoro con Marco
+
+Istruzione del titolare del 12 ottobre 2026: continuare in questa chat/progetto per aggiungere articoli e modificare Retro di testa. Non dipendere soltanto dalla memoria della chat; leggere i file del progetto.
+
+Sorgenti di lavoro: questa cartella retro-di-testa. Backup sul server 192.168.2.167, condivisione SALASERVER, cartella SITO INTERNET, montata sul Mac in /Volumes/SALASERVER/SITO INTERNET. In caso di perdita dei sorgenti locali o cambio di ambiente, usare uno ZIP completo verificato da quella cartella. Controllare data e contenuto, confrontare le versioni e lavorare su una copia locale: non sovrascrivere automaticamente un progetto più recente con un vecchio backup. Il file .sha256 consente di verificare l'integrità dell'archivio. La condivisione deve essere collegata e accessibile; i permessi di scrittura di questo ambiente possono non consentire il salvataggio sul server.
+
+Flusso: raccogliere testo, fotografie e risultati da Marco; aggiornare i sorgenti; controllare l'anteprima; costruire e verificare il sito completo; creare backup datato sul Mac e copiarlo sul server quando consentito. Non dichiarare riuscita la copia sul server senza verifica.
+
+Hosting: Cloudflare Pages, progetto retro-di-testa, dominio https://retroditesta.com/, caricamento diretto. Aggiornare il medesimo progetto con una nuova distribuzione contenente tutto dist; non creare un progetto per ogni articolo. Non caricare ZIP di sorgenti/backup o materiale redazionale privato. Conservare i contenuti esistenti. Prima di ogni aggiornamento pubblico ottenere il consenso del titolare: l'autorizzazione alla prima pubblicazione non è una delega permanente. Per operare nel pannello serve una sessione Cloudflare autenticata disponibile; nessuna password in chat o nei file del progetto.

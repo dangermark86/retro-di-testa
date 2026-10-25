@@ -1,0 +1,24 @@
+---
+const { id, title, type = 'Articolo' } = Astro.props;
+---
+<section class="comments" data-comments data-id={id} data-title={title} data-type={type}>
+  <div class="comments-heading"><div><p class="eyebrow">PARLIAMONE</p><h2>Commenti.</h2></div><span data-comment-count>0 commenti</span></div>
+  <form class="comment-form" data-comment-form>
+    <label>Il tuo nome<input name="author" maxlength="60" required autocomplete="name" /></label>
+    <label>Il tuo commento<textarea name="body" maxlength="1500" required rows="5"></textarea></label>
+    <label class="comment-honeypot" aria-hidden="true">Sito<input name="website" tabindex="-1" autocomplete="off" /></label>
+    <p class="muted">Il commento viene pubblicato subito. Evita dati personali e contenuti offensivi. Puoi chiedere la cancellazione scrivendo a <a href="mailto:retroditesta@gmx.de">retroditesta@gmx.de</a>.</p>
+    <button class="button dark" type="submit">Pubblica commento</button><p data-comment-status role="status" aria-live="polite"></p>
+  </form>
+  <div class="comment-list" data-comment-list><p class="muted">Caricamento commenti…</p></div>
+</section>
+<script>
+const esc=(v:string)=>v.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]||c));
+for(const section of document.querySelectorAll<HTMLElement>('[data-comments]')){
+  const id=section.dataset.id||'',list=section.querySelector<HTMLElement>('[data-comment-list]')!,count=section.querySelector<HTMLElement>('[data-comment-count]')!,status=section.querySelector<HTMLElement>('[data-comment-status]')!;
+  const load=async()=>{try{const r=await fetch(`/api/comments?contentId=${encodeURIComponent(id)}`);if(!r.ok)throw new Error();const data=await r.json();count.textContent=`${data.comments.length} ${data.comments.length===1?'commento':'commenti'}`;list.innerHTML=data.comments.length?data.comments.map((c:any)=>`<article class="comment-card ${c.featured?'featured-comment':''}" data-comment-id="${c.id}"><header><strong>${esc(c.author)}</strong><time>${new Date(c.created_at+'Z').toLocaleDateString('it-IT')}</time></header>${c.featured?'<span class="comment-badge">♥ Retro di testa</span>':''}<p>${esc(c.body).replace(/\n/g,'<br>')}</p><div class="comment-votes"><button type="button" data-comment-reaction="1" aria-pressed="${c.mine===1}">♡ <span>${c.likes||0}</span></button><button type="button" data-comment-reaction="-1" aria-pressed="${c.mine===-1}">− <span>${c.dislikes||0}</span></button></div></article>`).join(''):'<p class="muted">Non ci sono ancora commenti. Puoi essere il primo.</p>';}catch{list.innerHTML='<p class="muted">I commenti saranno disponibili sul sito online.</p>';}};
+  list.addEventListener('click',async e=>{const b=(e.target as Element).closest<HTMLButtonElement>('[data-comment-reaction]');if(!b)return;const card=b.closest<HTMLElement>('[data-comment-id]')!,active=b.getAttribute('aria-pressed')==='true';try{await fetch(`/api/comments/${card.dataset.commentId}/reaction`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({value:active?0:Number(b.dataset.commentReaction)})});await load();}catch{}});
+  section.querySelector<HTMLFormElement>('[data-comment-form]')!.addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget as HTMLFormElement, fd=new FormData(form);status.textContent='Pubblicazione in corso…';try{const r=await fetch('/api/comments',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({contentId:id,contentTitle:section.dataset.title,contentType:section.dataset.type,author:fd.get('author'),body:fd.get('body'),website:fd.get('website')})});const data=await r.json();if(!r.ok)throw new Error(data.error);form.reset();status.textContent='Commento pubblicato.';await load();}catch(error){status.textContent=error instanceof Error?error.message:'Pubblicazione non riuscita.';}});
+  load();
+}
+</script>

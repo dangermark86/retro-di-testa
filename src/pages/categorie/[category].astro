@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';import Archive from '../../components/Archive.astro';import { articles,categories } from '../../lib/content';
+export function getStaticPaths(){return Object.entries(categories).map(([category,label])=>({params:{category},props:{label}}));}
+const {label}=Astro.props;const category=Astro.params.category;const items=(await articles()).filter(a=>a.data.category===category);
+---
+<Base title={`${label} — Retro di testa`}><section class="wrap archive"><p class="eyebrow">ESPLORA PER CATEGORIA</p><h1>{label}</h1><Archive items={items} category={category}/></section></Base>

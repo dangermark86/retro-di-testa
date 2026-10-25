@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import '../styles/site-modes.css';
+const {title = 'Retro di testa — La curiosità, messa alla prova.', description = 'Proviamo le cose. Scopriamo come funzionano. Risolviamo i problemi.', noindex = false} = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+---
+<!doctype html><html lang="it"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><title>{title}</title><meta name="description" content={description}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/>{canonical && <><link rel="canonical" href={canonical}/><meta property="og:url" content={canonical}/></>}<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48"/><link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/>{noindex && <meta name="robots" content="noindex,nofollow"/>}<script is:inline>{const version='cosmo-retro-v1';if(localStorage.getItem('rtd-site-mode-version')!==version){localStorage.setItem('rtd-site-mode','cosmo');localStorage.setItem('rtd-site-mode-version',version);}document.documentElement.dataset.siteMode=localStorage.getItem('rtd-site-mode')==='retro'?'retro':'cosmo';}</script></head><body>
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+<header class="header wrap"><a href="/" class="brand" aria-label="Retro di testa, homepage"><span class="brand-logo-stage"><img class="brand-logo" src="/immagini/logo-retro-di-testa.jpg" width="80" height="80" alt=""/></span><span>Retro di testa<span class="brand-sub">CURIOSITÀ. METODO. SOLUZIONI.</span></span></a><div class="header-actions"><button class="header-mode-button" type="button" data-site-mode aria-pressed="false" aria-label="Attiva la modalità Retro Web 1995–1999"><span class="mode-led" aria-hidden="true"></span><span data-site-mode-label>Modalità Retro</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span aria-hidden="true">☰</span><span>Menu</span></button></div><nav id="site-menu" aria-label="Navigazione principale"><button class="menu-close" type="button" aria-label="Chiudi il menu">×</button><a href="/articoli/">Articoli</a><a href="/guide/">Guide</a><a href="/progetti/">Progetti</a><a href="/#tecnologie-del-passato">Tecnologie del passato</a><a href="/metodo/">Il mio metodo</a><a href="/chi-sono/">Chi sono</a><a href="/youtube/" class="header-youtube" aria-label="Dove puoi trovarmi: il mio canale YouTube"><svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="m10 9 6 3-6 3z" fill="white"/></svg>YouTube</a></nav><button class="menu-backdrop" type="button" aria-label="Chiudi il menu"></button></header>
+<main id="contenuto"><slot/></main>
+<footer class="wrap footer"><a class="footer-brand" href="/"><img src="/immagini/logo-retro-di-testa.jpg" width="52" height="52" alt=""/>Retro di testa</a><p>La tecnologia si capisce meglio<br/>quando ci metti le mani.</p><div><a href="/guide/">Guide</a><a href="/progetti/">Progetti</a><a href="/metodo/">Il mio metodo</a><a href="/chi-sono/">Chi sono</a><a href="/contatti/">Contatti</a><a href="/impressum/">Impressum</a><a href="/privacy/">Privacy</a><a href="/cookie/">Cookie e preferenze</a><a href="/youtube/">Il mio canale YouTube</a><small>© {new Date().getFullYear()} Retro di testa</small></div></footer>
+<button class="staff-secret" type="button" aria-label="Area staff" title="Area staff" data-staff-secret></button>
+<script is:inline>
+  (() => {
+    const toggle = document.querySelector('.menu-toggle');
+    const close = document.querySelector('.menu-close');
+    const backdrop = document.querySelector('.menu-backdrop');
+    const nav = document.querySelector('#site-menu');
+    if (!toggle || !nav) return;
+    const resetPageState = () => {
+      document.body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    window.addEventListener('pageshow', resetPageState);
+    const setOpen = (open) => {
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) nav.querySelector('a')?.focus();
+      else toggle.focus();
+    };
+    toggle.addEventListener('click', () => setOpen(true));
+    close?.addEventListener('click', () => setOpen(false));
+    backdrop?.addEventListener('click', () => setOpen(false));
+    nav.addEventListener('click', (event) => {
+      const link = event.target.closest('a');
+      if (!link) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('menu-open')) setOpen(false);
+    });
+  })();
+  document.querySelector('[data-staff-secret]')?.addEventListener('click', () => {
+    window.location.assign('/staff/');
+  });
+  (() => {
+    const button = document.querySelector('button[data-site-mode]');
+    const label = document.querySelector('[data-site-mode-label]');
+    if (!button) return;
+    const paint = () => {
+      const retro = document.documentElement.dataset.siteMode === 'retro';
+      button.setAttribute('aria-pressed', String(retro));
+      button.setAttribute('aria-label', retro ? 'Attiva la modalità Cosmo 2000' : 'Attiva la modalità Retro Web 1995–1999');
+      if (label) label.textContent = retro ? 'Torna a Cosmo' : 'Modalità Retro';
+    };
+    paint();
+    button.addEventListener('click', () => {
+      const next = document.documentElement.dataset.siteMode === 'retro' ? 'cosmo' : 'retro';
+      document.documentElement.dataset.siteMode = next;
+      localStorage.setItem('rtd-site-mode', next);
+      paint();
+    });
+  })();
+</script>
+</body></html>

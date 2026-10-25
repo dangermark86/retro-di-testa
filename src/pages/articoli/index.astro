@@ -1,0 +1,5 @@
+---
+import Base from '../../layouts/Base.astro';import Archive from '../../components/Archive.astro';import { articles } from '../../lib/content';
+const items=await articles();
+---
+<Base title="Tutti gli articoli — Retro di testa"><section class="wrap archive"><p class="eyebrow">RETRO DI TESTA</p><h1>Gli articoli.</h1><p class="lead">Le mie esperienze, le prove e le soluzioni che ho raccontato.</p><Archive items={items}/></section></Base>

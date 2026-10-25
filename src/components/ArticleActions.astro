@@ -1,0 +1,27 @@
+---
+const { id, title } = Astro.props;
+---
+<section class="article-actions" aria-label="Reazioni e condivisione" data-content-actions data-id={id} data-title={title}>
+  <h2>Ti è piaciuto questo contenuto?</h2>
+  <div class="article-actions-buttons">
+    <button type="button" data-reaction="1" aria-pressed="false">♡ Mi piace <strong data-likes>0</strong></button>
+    <button type="button" data-reaction="-1" aria-pressed="false">Non mi piace <strong data-dislikes>0</strong></button>
+    <button type="button" data-share><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"/></svg> Condividi</button>
+  </div>
+  <p class="muted">Il voto viene contato una volta per visitatore. Non mostro pubblicamente il tuo indirizzo IP.</p>
+  <p data-action-status role="status" aria-live="polite"></p>
+  <div data-share-fallback hidden><label>Link del contenuto<input type="url" readonly data-share-url /></label><button type="button" data-copy-link>Copia link</button></div>
+</section>
+<script>
+for (const section of document.querySelectorAll<HTMLElement>('[data-content-actions]')) {
+  const id=section.dataset.id||'', status=section.querySelector<HTMLElement>('[data-action-status]')!;
+  const buttons=[...section.querySelectorAll<HTMLButtonElement>('[data-reaction]')];
+  const paint=(data:any)=>{section.querySelector<HTMLElement>('[data-likes]')!.textContent=String(data.likes||0);section.querySelector<HTMLElement>('[data-dislikes]')!.textContent=String(data.dislikes||0);buttons.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.reaction)===Number(data.mine))));};
+  fetch(`/api/reactions?contentId=${encodeURIComponent(id)}`).then(r=>r.ok?r.json():Promise.reject()).then(paint).catch(()=>{status.textContent='Le reazioni saranno disponibili online.'});
+  buttons.forEach(button=>button.addEventListener('click',async()=>{const active=button.getAttribute('aria-pressed')==='true',value=active?0:Number(button.dataset.reaction);try{const r=await fetch(`/api/reactions?contentId=${encodeURIComponent(id)}`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({value})});if(!r.ok)throw new Error();paint(await r.json());status.textContent=value?'Grazie per il voto.':'Voto rimosso.';}catch{status.textContent='Non riesco a registrare il voto in questo momento.';}}));
+  const url = new URL(location.pathname, location.origin).href, field=section.querySelector<HTMLInputElement>('[data-share-url]')!; field.value=url;
+  const copy=async()=>{try{await navigator.clipboard.writeText(url);status.textContent='Link copiato.';}catch{section.querySelector<HTMLElement>('[data-share-fallback]')!.hidden=false;field.focus();field.select();}};
+  section.querySelector('[data-copy-link]')!.addEventListener('click',copy);
+  section.querySelector('[data-share]')!.addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:section.dataset.title,url});return;}catch(e){if(e instanceof DOMException&&e.name==='AbortError')return;}}await copy();});
+}
+</script>

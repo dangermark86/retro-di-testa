@@ -1,0 +1,6 @@
+---
+import Card from './Card.astro';
+const { items } = Astro.props;
+---
+<div class="cards">{items.map((article:any)=><Card article={article}/>)}</div>
+{items.length === 0 && <p class="muted">Non ci sono articoli pubblicati in questa sezione.</p>}

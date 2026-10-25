@@ -1,0 +1,8 @@
+---
+import stories from '../lib/project-stories.json';
+const {slug}=Astro.props;
+type Block={kind:string;text?:string;rows?:string[][]};
+type Chapter={id:string;title:string;images:{src:string;caption:string}[];blocks:Block[];sourcePage:number};
+const chapters:Chapter[]=stories[slug as keyof typeof stories];
+---
+<div class="project-reading" id="costruzione"><aside class="project-reading-index"><p class="eyebrow">DENTRO IL PROGETTO</p><details open><summary>In questa pagina</summary><nav aria-label="Indice del progetto">{chapters.map(chapter=><a href={`#${chapter.id}`}>{chapter.title}</a>)}</nav></details></aside><div class="project-reading-body">{chapters.map(chapter=><section class="project-topic" id={chapter.id}><h2>{chapter.title}</h2>{chapter.images.length>0 && <div class:list={['project-topic-gallery',{'single':chapter.images.length===1,'measurement-gallery':(slug==='legendary' && chapter.sourcePage>=11 && chapter.sourcePage<=15) || (slug!=='legendary' && chapter.sourcePage>=19 && chapter.sourcePage<=27)}]}>{chapter.images.map(pic=><figure><a href={pic.src} target="_blank" aria-label={`Ingrandisci: ${pic.caption}`}><img src={pic.src} alt={pic.caption} loading="lazy" decoding="async"/></a><figcaption>{pic.caption}</figcaption></figure>)}</div>}{chapter.blocks.map(block=>block.kind==='table' ? <div class="project-table-scroll"><table><tbody>{block.rows!.map(row=><tr><th scope="row">{row[0]}</th>{row.slice(1).map(cell=><td>{cell}</td>)}</tr>)}</tbody></table></div> : <p>{block.text}</p>)}</section>)}</div></div>

@@ -1,0 +1,6 @@
+---
+import { categories } from '../lib/content';
+const {article} = Astro.props;
+const date = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }).format(article.data.date);
+---
+<article class="article-card"><a class="card-art" href={`/articoli/${article.id}/`} tabindex="-1" aria-hidden="true">{article.data.image ? <img src={article.data.image} alt="" loading="lazy"/> : <span class={`abstract ${article.data.category}`}><span>{article.data.category === 'guide' ? '↗' : article.data.category === 'soluzioni' ? '↔' : '＋'}</span></span>}</a><div class="card-meta"><span>{article.data.section === 'domande' ? 'Domande e curiosità' : categories[article.data.category as keyof typeof categories]}</span><time datetime={article.data.date.toISOString()}>{date}</time>{article.data.draft && <span class="draft">Bozza</span>}</div><h3><a href={`/articoli/${article.id}/`}>{article.data.title}</a></h3><p>{article.data.description}</p><a class="text-link" href={`/articoli/${article.id}/`}>Leggi l’articolo <span>↗</span></a></article>
