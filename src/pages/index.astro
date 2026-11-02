@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageViewTracker from '../components/PageViewTracker.astro';
 import { articles } from '../lib/content';
 const all = await articles();
 const latest = all.find(a => a.id === 'da-huawei-p30-pro-a-iphone-18-pro') || all.find(a => a.data.section !== 'domande');
@@ -8,6 +9,7 @@ const curiosity = all.find(a => a.id === 'raid-spazio-livelli');
 const formatDate = (date: Date) => new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
 ---
 <Base>
+<PageViewTracker id="homepage" title="Homepage" />
 <section class="cinema-hero wrap" id="inizio">
   <div class="cosmo-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="cinema-hero-copy">
