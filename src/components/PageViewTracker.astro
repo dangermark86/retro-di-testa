@@ -3,9 +3,6 @@ const { id, title, type = 'Pagina' } = Astro.props;
 ---
 <script define:vars={{ id, title, type }}>
   (() => {
-    const key = `rtd-page-view:${id}:${new Date().toISOString().slice(0, 10)}`;
-    if (sessionStorage.getItem(key)) return;
-    sessionStorage.setItem(key, '1');
     fetch('/api/stats', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ contentId: id, contentTitle: title, contentType: type, event: 'view', percent: 0 }), keepalive: true }).catch(() => {});
   })();
 </script>
