@@ -14,12 +14,14 @@ const passwordHash = async (password, salt) => {
   return hex(await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: encoder.encode(salt), iterations: 100000, hash: 'SHA-256' }, key, 256));
 };
 const clean = (value, max) => String(value || '').trim().slice(0, max);
+const validPassword = value => String(value || '').length >= 14 && /[a-z]/.test(value) && /[A-Z]/.test(value) && /\d/.test(value) && /[^A-Za-z0-9]/.test(value);
 const parseCookies = request => Object.fromEntries((request.headers.get('cookie') || '').split(';').map(v => v.trim()).filter(Boolean).map(v => { const at = v.indexOf('='); return [decodeURIComponent(v.slice(0, at)), decodeURIComponent(v.slice(at + 1))]; }));
 const sessionCookie = (token, maxAge = 60 * 60 * 24 * 7) => `${SESSION_COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`;
 const clearSessionCookie = () => `${SESSION_COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`;
 const body = async request => {
   const type = request.headers.get('content-type') || '';
   if (!type.includes('application/json')) throw new Error('Formato della richiesta non valido.');
+  if (Number(request.headers.get('content-length') || 0) > 1024 * 1024) throw new Error('Richiesta troppo grande.');
   return request.json();
 };
 const mutationAllowed = request => {
@@ -38,13 +40,68 @@ const countryName = request => {
   return names[code] || (code === 'XX' ? 'Non disponibile' : code);
 };
 
+const base32Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+const base32Encode = bytes => {
+  let bits = 0, value = 0, output = '';
+  for (const byte of bytes) {
+    value = (value << 8) | byte; bits += 8;
+    while (bits >= 5) { output += base32Alphabet[(value >>> (bits - 5)) & 31]; bits -= 5; }
+  }
+  if (bits > 0) output += base32Alphabet[(value << (5 - bits)) & 31];
+  return output;
+};
+const base32Decode = input => {
+  let bits = 0, value = 0; const bytes = [];
+  for (const char of String(input || '').toUpperCase().replace(/=|\s/g, '')) {
+    const index = base32Alphabet.indexOf(char); if (index < 0) continue;
+    value = (value << 5) | index; bits += 5;
+    if (bits >= 8) { bytes.push((value >>> (bits - 8)) & 255); bits -= 8; }
+  }
+  return new Uint8Array(bytes);
+};
+const totpCode = async (secret, counter) => {
+  const key = await crypto.subtle.importKey('raw', base32Decode(secret), { name:'HMAC', hash:'SHA-1' }, false, ['sign']);
+  const data = new ArrayBuffer(8), view = new DataView(data); view.setUint32(4, counter, false);
+  const signature = new Uint8Array(await crypto.subtle.sign('HMAC', key, data));
+  const offset = signature[signature.length - 1] & 15;
+  const number = ((signature[offset] & 127) << 24 | signature[offset + 1] << 16 | signature[offset + 2] << 8 | signature[offset + 3]) % 1000000;
+  return String(number).padStart(6, '0');
+};
+const verifyTotp = async (secret, code) => {
+  if (!/^\d{6}$/.test(String(code || ''))) return false;
+  const counter = Math.floor(Date.now() / 30000);
+  for (const delta of [-1,0,1]) if (await totpCode(secret, counter + delta) === String(code)) return true;
+  return false;
+};
+const normalizeRecoveryCode = value => String(value || '').toUpperCase().replace(/[^A-Z0-9]/g,'');
+const consumeRecoveryCode = async (env,userId,value) => {
+  const normalized=normalizeRecoveryCode(value); if(normalized.length!==12)return false;
+  const hash=await sha256(normalized),row=await env.DB.prepare('SELECT code_hash FROM recovery_codes WHERE code_hash=? AND user_id=? AND used_at IS NULL').bind(hash,userId).first();
+  if(!row)return false;
+  await env.DB.prepare('UPDATE recovery_codes SET used_at=CURRENT_TIMESTAMP WHERE code_hash=?').bind(hash).run();
+  return true;
+};
+const requestIpHash = async (request, env) => sha256(`${env.ANALYTICS_SALT || 'retro-di-testa'}|security|${request.headers.get('cf-connecting-ip') || 'unknown'}`);
+const securityEvent = async (env, request, userId, eventType, detail = '') => {
+  await env.DB.prepare('INSERT INTO security_events (id,user_id,event_type,detail,ip_hash) VALUES (?,?,?,?,?)').bind(crypto.randomUUID(), userId || null, eventType, clean(detail,500), await requestIpHash(request,env)).run();
+};
+const notifyOwner = async (env, subject, text) => {
+  if (!env.MAILER || !env.MAILER_TOKEN) return;
+  const owner = await env.DB.prepare("SELECT email FROM users WHERE role='owner' AND active=1 LIMIT 1").first();
+  if (!owner?.email) return;
+  await env.MAILER.fetch('https://mailer.internal/send',{method:'POST',headers:{'Authorization':`Bearer ${env.MAILER_TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({to:owner.email,subject,text,html:`<p>${text.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</p>`})});
+};
+const recentAuth = session => session.reauth_until && new Date(`${session.reauth_until}Z`).getTime() > Date.now();
+const requireRecentAuth = session => recentAuth(session) ? null : json({ error:'Per questa operazione conferma nuovamente password e secondo fattore.', reauthRequired:true },403);
+
 async function getSession(request, env) {
   const token = parseCookies(request)[SESSION_COOKIE];
   if (!token) return null;
   const tokenHash = await sha256(token);
   const session = await env.DB.prepare(`
     SELECT s.token_hash, s.csrf_token, s.expires_at,
-           u.id, u.name, u.email, u.username, u.role, u.active, u.must_change
+           s.reauth_until, s.last_seen_at, s.user_agent, s.ip_hash,
+           u.id, u.name, u.email, u.username, u.role, u.active, u.must_change, u.totp_enabled
       FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.token_hash = ? AND s.expires_at > CURRENT_TIMESTAMP AND u.active = 1
   `).bind(tokenHash).first();
@@ -66,18 +123,35 @@ async function requireSession(request, env, roles) {
   return { session };
 }
 
-const userPublic = row => ({ id: row.id, name: row.name, email: row.email, username: row.username, role: row.role, active: Boolean(row.active), mustChange: Boolean(row.must_change) });
+const userPublic = row => ({ id: row.id, name: row.name, email: row.email, username: row.username, role: row.role, active: Boolean(row.active), mustChange: Boolean(row.must_change), totpEnabled:Boolean(row.totp_enabled) });
 
 async function login(request, env) {
   if (!mutationAllowed(request)) return json({ error: 'Origine della richiesta non valida.' }, 403);
   const data = await body(request);
   const username = clean(data.username, 60);
   const password = String(data.password || '');
+  const attemptKey = await sha256(`${await requestIpHash(request,env)}|${username.toLowerCase()}`);
+  await env.DB.prepare("DELETE FROM login_attempts WHERE created_at<datetime('now','-1 day')").run();
+  const attempts = await env.DB.prepare("SELECT COUNT(*) count FROM login_attempts WHERE attempt_key=? AND created_at>datetime('now','-30 minutes')").bind(attemptKey).first();
+  if (Number(attempts?.count || 0) >= 5) return json({ error:'Troppi tentativi. Riprova tra 30 minuti.' },429);
   const user = await env.DB.prepare('SELECT * FROM users WHERE username = ? AND active = 1').bind(username).first();
-  if (!user || await passwordHash(password, user.password_salt) !== user.password_hash) return json({ error: 'Nome utente o password non corretti.' }, 401);
+  if (!user || await passwordHash(password, user.password_salt) !== user.password_hash) {
+    await env.DB.prepare('INSERT INTO login_attempts (attempt_key) VALUES (?)').bind(attemptKey).run();
+    await securityEvent(env,request,user?.id,'login_failed',username);
+    return json({ error: 'Nome utente o password non corretti.' }, 401);
+  }
+  if (user.totp_enabled && !await verifyTotp(user.totp_secret,data.totp) && !await consumeRecoveryCode(env,user.id,data.totp)) {
+    if (!data.totp) return json({ requiresTotp:true, error:'Inserisci il codice di sicurezza a 6 cifre.' },202);
+    await env.DB.prepare('INSERT INTO login_attempts (attempt_key) VALUES (?)').bind(attemptKey).run();
+    await securityEvent(env,request,user.id,'totp_failed');
+    return json({ requiresTotp:true, error:'Codice di sicurezza non corretto.' },401);
+  }
   const token = randomToken(32), tokenHash = await sha256(token), csrf = randomToken(24);
   await env.DB.prepare("DELETE FROM sessions WHERE expires_at <= CURRENT_TIMESTAMP").run();
-  await env.DB.prepare("INSERT INTO sessions (token_hash,user_id,csrf_token,expires_at) VALUES (?,?,?,datetime('now','+7 days'))").bind(tokenHash, user.id, csrf).run();
+  await env.DB.prepare('DELETE FROM login_attempts WHERE attempt_key=?').bind(attemptKey).run();
+  await env.DB.prepare("INSERT INTO sessions (token_hash,user_id,csrf_token,expires_at,reauth_until,user_agent,ip_hash) VALUES (?,?,?,datetime('now','+7 days'),datetime('now','+10 minutes'),?,?)").bind(tokenHash, user.id, csrf, clean(request.headers.get('user-agent'),300), await requestIpHash(request,env)).run();
+  await securityEvent(env,request,user.id,'login_success');
+  await notifyOwner(env,'Nuovo accesso — Retro di testa',`È stato eseguito un nuovo accesso all’area Staff per l’account ${user.username}. Se non sei stato tu, cambia subito la password e chiudi le sessioni attive.`).catch(()=>{});
   return json({ user: userPublic(user), csrf }, 200, { 'set-cookie': sessionCookie(token) });
 }
 
@@ -90,9 +164,9 @@ async function logout(request, env) {
 }
 
 async function changeOwnerPassword(request, env) {
-  const auth = await requireSession(request, env, ['owner']); if (auth.error) return auth.error;
+  const auth = await requireSession(request, env, ['owner','admin','moderator']); if (auth.error) return auth.error;
   const data = await body(request), current = String(data.currentPassword || ''), next = String(data.newPassword || '');
-  if (next.length < 12) return json({ error: 'La nuova password deve contenere almeno 12 caratteri.' }, 400);
+  if (!validPassword(next)) return json({ error: 'Usa almeno 14 caratteri con maiuscola, minuscola, numero e simbolo.' }, 400);
   const user = await env.DB.prepare('SELECT * FROM users WHERE id = ?').bind(auth.session.id).first();
   if (await passwordHash(current, user.password_salt) !== user.password_hash) return json({ error: 'La password attuale non è corretta.' }, 400);
   const salt = randomToken(24), hash = await passwordHash(next, salt);
@@ -131,7 +205,7 @@ async function requestReset(request, env) {
 async function completeReset(request, env) {
   if (!mutationAllowed(request)) return json({ error: 'Richiesta non valida.' }, 403);
   const data = await body(request), token = String(data.token || ''), next = String(data.newPassword || '');
-  if (next.length < 12) return json({ error: 'La nuova password deve contenere almeno 12 caratteri.' }, 400);
+  if (!validPassword(next)) return json({ error: 'Usa almeno 14 caratteri con maiuscola, minuscola, numero e simbolo.' }, 400);
   const tokenHash = await sha256(token);
   const reset = await env.DB.prepare("SELECT * FROM password_resets WHERE token_hash=? AND used_at IS NULL AND expires_at>CURRENT_TIMESTAMP").bind(tokenHash).first();
   if (!reset) return json({ error: 'Collegamento scaduto o non valido.' }, 400);
@@ -142,6 +216,63 @@ async function completeReset(request, env) {
     env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(reset.user_id)
   ]);
   return json({ ok: true });
+}
+
+async function reauthenticate(request, env) {
+  const auth = await requireSession(request,env,['owner','admin','moderator']); if (auth.error) return auth.error;
+  const data = await body(request), password = String(data.password || '');
+  const user = await env.DB.prepare('SELECT * FROM users WHERE id=?').bind(auth.session.id).first();
+  if (!user || await passwordHash(password,user.password_salt) !== user.password_hash) return json({ error:'Password non corretta.' },401);
+  if (user.totp_enabled && !await verifyTotp(user.totp_secret,data.totp) && !await consumeRecoveryCode(env,user.id,data.totp)) return json({ error:'Codice di sicurezza non corretto.' },401);
+  const token = parseCookies(request)[SESSION_COOKIE];
+  await env.DB.prepare("UPDATE sessions SET reauth_until=datetime('now','+10 minutes'),last_seen_at=CURRENT_TIMESTAMP WHERE token_hash=?").bind(await sha256(token)).run();
+  await securityEvent(env,request,user.id,'reauth_success');
+  return json({ok:true,validForMinutes:10});
+}
+
+async function setupTotp(request, env) {
+  const auth = await requireSession(request,env,['owner']); if (auth.error) return auth.error;
+  const gate = requireRecentAuth(auth.session); if (gate) return gate;
+  const secret = base32Encode(crypto.getRandomValues(new Uint8Array(20)));
+  await env.DB.prepare('UPDATE users SET totp_pending_secret=? WHERE id=?').bind(secret,auth.session.id).run();
+  const issuer = encodeURIComponent('Retro di testa');
+  const account = encodeURIComponent(auth.session.email);
+  return json({secret,uri:`otpauth://totp/${issuer}:${account}?secret=${secret}&issuer=${issuer}&digits=6&period=30`});
+}
+
+async function confirmTotp(request, env) {
+  const auth = await requireSession(request,env,['owner']); if (auth.error) return auth.error;
+  const data = await body(request);
+  const user = await env.DB.prepare('SELECT totp_pending_secret FROM users WHERE id=?').bind(auth.session.id).first();
+  if (!user?.totp_pending_secret || !await verifyTotp(user.totp_pending_secret,data.code)) return json({error:'Codice non corretto. Controlla l’orario del telefono e riprova.'},400);
+  const recoveryCodes=Array.from({length:10},()=>`${randomToken(3).toUpperCase()}-${randomToken(3).toUpperCase()}`);
+  const recoveryStatements=await Promise.all(recoveryCodes.map(async code=>env.DB.prepare('INSERT INTO recovery_codes (code_hash,user_id) VALUES (?,?)').bind(await sha256(normalizeRecoveryCode(code)),auth.session.id)));
+  await env.DB.batch([
+    env.DB.prepare('UPDATE users SET totp_secret=totp_pending_secret,totp_pending_secret=NULL,totp_enabled=1,updated_at=CURRENT_TIMESTAMP WHERE id=?').bind(auth.session.id),
+    env.DB.prepare('DELETE FROM recovery_codes WHERE user_id=?').bind(auth.session.id),
+    ...recoveryStatements
+  ]);
+  await securityEvent(env,request,auth.session.id,'totp_enabled');
+  await notifyOwner(env,'Secondo fattore attivato — Retro di testa','È stata attivata la verifica in due passaggi per l’account proprietario.').catch(()=>{});
+  return json({ok:true,recoveryCodes});
+}
+
+async function securityOverview(request, env) {
+  const auth = await requireSession(request,env,['owner']); if (auth.error) return auth.error;
+  const tokenHash = await sha256(parseCookies(request)[SESSION_COOKIE] || '');
+  const sessions = await env.DB.prepare("SELECT token_hash,created_at,last_seen_at,expires_at,user_agent,ip_hash FROM sessions WHERE user_id=? AND expires_at>CURRENT_TIMESTAMP ORDER BY created_at DESC").bind(auth.session.id).all();
+  const events = await env.DB.prepare('SELECT event_type,detail,created_at FROM security_events WHERE user_id=? ORDER BY created_at DESC LIMIT 100').bind(auth.session.id).all();
+  return json({totpEnabled:Boolean(auth.session.totp_enabled),sessions:sessions.results.map(s=>({id:s.token_hash,current:s.token_hash===tokenHash,createdAt:s.created_at,lastSeenAt:s.last_seen_at,expiresAt:s.expires_at,userAgent:s.user_agent})),events:events.results});
+}
+
+async function revokeSession(request, env, id) {
+  const auth = await requireSession(request,env,['owner']); if (auth.error) return auth.error;
+  const gate = requireRecentAuth(auth.session); if (gate) return gate;
+  const current = await sha256(parseCookies(request)[SESSION_COOKIE] || '');
+  if (id === current) return json({error:'Per chiudere la sessione attuale usa Esci.'},400);
+  await env.DB.prepare('DELETE FROM sessions WHERE token_hash=? AND user_id=?').bind(id,auth.session.id).run();
+  await securityEvent(env,request,auth.session.id,'session_revoked');
+  return json({ok:true});
 }
 
 async function staffList(request, env) {
@@ -155,7 +286,7 @@ async function createStaff(request, env) {
   const data = await body(request), name = clean(data.name, 100), email = clean(data.email, 160).toLowerCase(), username = clean(data.username, 60), role = data.role;
   if (!name || !email || !username || !['admin', 'moderator'].includes(role)) return json({ error: 'Dati dell’account incompleti.' }, 400);
   const password = randomToken(10) + '!Aa', salt = randomToken(24), hash = await passwordHash(password, salt), id = crypto.randomUUID();
-  try { await env.DB.prepare('INSERT INTO users (id,name,email,username,role,password_salt,password_hash,active,must_change) VALUES (?,?,?,?,?,?,?,1,0)').bind(id, name, email, username, role, salt, hash).run(); }
+  try { await env.DB.prepare('INSERT INTO users (id,name,email,username,role,password_salt,password_hash,active,must_change) VALUES (?,?,?,?,?,?,?,1,1)').bind(id, name, email, username, role, salt, hash).run(); }
   catch { return json({ error: 'Email o nome utente già utilizzati.' }, 409); }
   return json({ user: { id, name, email, username, role, active: true }, temporaryPassword: password }, 201);
 }
@@ -173,9 +304,9 @@ async function updateStaff(request, env, id) {
     await env.DB.prepare('UPDATE users SET active=CASE active WHEN 1 THEN 0 ELSE 1 END,updated_at=CURRENT_TIMESTAMP WHERE id=?').bind(id).run();
     await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(id).run();
   } else if (action === 'password' && target.role !== 'owner') {
-    const next = String(data.newPassword || ''); if (next.length < 12) return json({ error: 'La password deve contenere almeno 12 caratteri.' }, 400);
+    const next = String(data.newPassword || ''); if (!validPassword(next)) return json({ error: 'Usa almeno 14 caratteri con maiuscola, minuscola, numero e simbolo.' }, 400);
     const salt = randomToken(24), hash = await passwordHash(next, salt);
-    await env.DB.prepare('UPDATE users SET password_salt=?,password_hash=?,updated_at=CURRENT_TIMESTAMP WHERE id=?').bind(salt, hash, id).run();
+    await env.DB.prepare('UPDATE users SET password_salt=?,password_hash=?,must_change=1,updated_at=CURRENT_TIMESTAMP WHERE id=?').bind(salt, hash, id).run();
     await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(id).run();
   } else return json({ error: 'Operazione non disponibile.' }, 400);
   return json({ ok: true });
@@ -293,6 +424,98 @@ async function commentReaction(request, env, id) {
   return json({mine:value,likes:totals.likes||0,dislikes:totals.dislikes||0});
 }
 
+const cmsKinds = ['articolo','guida','recensione'];
+const cmsCategories = ['guide','soluzioni','test','recensioni'];
+const slugify = value => clean(value,180).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,140);
+const safeMarkdown = value => {
+  const text = String(value || '').replace(/\0/g,'').slice(0,250000);
+  if (/<\s*(script|style|object|embed|iframe|form|input|button|meta|link)\b/i.test(text) || /\bon\w+\s*=|javascript\s*:/i.test(text)) throw new Error('Il testo contiene codice non consentito. Incolla soltanto testo, titoli, elenchi e collegamenti sicuri.');
+  return text;
+};
+const cmsPayload = data => {
+  const title = clean(data.title,180), description = clean(data.description,320), kind = cmsKinds.includes(data.kind) ? data.kind : 'articolo', category = cmsCategories.includes(data.category) ? data.category : 'soluzioni';
+  const slug = slugify(data.slug || title), tags = Array.isArray(data.tags) ? data.tags.map(x=>clean(x,50)).filter(Boolean).slice(0,20) : [];
+  if (!title || !description || !slug) throw new Error('Titolo, descrizione e indirizzo sono obbligatori.');
+  return {title,description,kind,category,slug,body:safeMarkdown(data.body),tags,image:clean(data.image,300)||null,imageAlt:clean(data.imageAlt,240)||null};
+};
+const cmsRow = row => ({id:row.id,slug:row.slug,kind:row.kind,title:row.title,description:row.description,category:row.category,body:row.body,tags:JSON.parse(row.tags_json||'[]'),image:row.image,imageAlt:row.image_alt,status:row.status,publishedAt:row.published_at,createdAt:row.created_at,updatedAt:row.updated_at});
+const saveRevision = async (env,row,userId,action) => env.DB.prepare('INSERT INTO cms_revisions (id,content_id,snapshot_json,action,created_by) VALUES (?,?,?,?,?)').bind(crypto.randomUUID(),row.id,JSON.stringify(cmsRow(row)),action,userId).run();
+const markdownFile = (item,draft) => {
+  const section = item.kind === 'progetto' ? 'progetto' : 'articolo';
+  const front = {section,title:item.title,description:item.description,category:item.category,date:new Date().toISOString().slice(0,10),draft,tags:item.tags,image:item.image||undefined,imageAlt:item.imageAlt||undefined};
+  return `---\n${Object.entries(front).filter(([,v])=>v!==undefined).map(([k,v])=>`${k}: ${JSON.stringify(v)}`).join('\n')}\n---\n\n${item.body.trim()}\n`;
+};
+const utf8Base64 = value => { const bytes = encoder.encode(value); let binary=''; for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000)); return btoa(binary); };
+const bytesBase64 = bytes => { let binary=''; for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000)); return btoa(binary); };
+const githubConfig = env => ({token:env.GITHUB_CONTENT_TOKEN,repo:env.GITHUB_REPOSITORY || 'dangermark86/retro-di-testa',branch:env.GITHUB_BRANCH || 'main'});
+async function githubFile(env,path) {
+  const cfg=githubConfig(env); if(!cfg.token) throw new Error('Pubblicazione non configurata: manca l’autorizzazione limitata a GitHub.');
+  const response=await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${path}?ref=${encodeURIComponent(cfg.branch)}`,{headers:{Authorization:`Bearer ${cfg.token}`,Accept:'application/vnd.github+json','User-Agent':'retro-di-testa-cms'}});
+  if(response.status===404)return null; if(!response.ok)throw new Error('Impossibile leggere il file pubblicato.'); return response.json();
+}
+async function githubWrite(env,path,content,message,sha,preEncoded=false) {
+  const cfg=githubConfig(env); if(!cfg.token) throw new Error('Pubblicazione non configurata: manca l’autorizzazione limitata a GitHub.');
+  const response=await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${path}`,{method:'PUT',headers:{Authorization:`Bearer ${cfg.token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'retro-di-testa-cms'},body:JSON.stringify({message,content:preEncoded?content:utf8Base64(content),branch:cfg.branch,...(sha?{sha}:{})})});
+  if(!response.ok)throw new Error('GitHub non ha accettato la pubblicazione. Nessuna copia locale è stata persa.'); return response.json();
+}
+async function cmsList(request,env) {
+  const auth=await requireSession(request,env,['owner','admin']); if(auth.error)return auth.error;
+  const rows=await env.DB.prepare('SELECT * FROM cms_contents ORDER BY updated_at DESC LIMIT 500').all(); return json({contents:rows.results.map(cmsRow)});
+}
+async function cmsGet(request,env,id) {
+  const auth=await requireSession(request,env,['owner','admin']); if(auth.error)return auth.error;
+  const row=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); if(!row)return json({error:'Contenuto non trovato.'},404);
+  const revisions=await env.DB.prepare('SELECT id,action,created_at,created_by FROM cms_revisions WHERE content_id=? ORDER BY created_at DESC LIMIT 50').bind(id).all(); return json({content:cmsRow(row),revisions:revisions.results});
+}
+async function cmsCreate(request,env) {
+  const auth=await requireSession(request,env,['owner','admin']); if(auth.error)return auth.error;
+  const item=cmsPayload(await body(request)),id=crypto.randomUUID();
+  try{await env.DB.prepare('INSERT INTO cms_contents (id,slug,kind,title,description,category,body,tags_json,image,image_alt,created_by,updated_by) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)').bind(id,item.slug,item.kind,item.title,item.description,item.category,item.body,JSON.stringify(item.tags),item.image,item.imageAlt,auth.session.id,auth.session.id).run();}
+  catch{return json({error:'Esiste già un contenuto con questo indirizzo.'},409);}
+  const row=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); await saveRevision(env,row,auth.session.id,'created'); await securityEvent(env,request,auth.session.id,'cms_created',item.slug); return json({content:cmsRow(row)},201);
+}
+async function cmsUpdate(request,env,id) {
+  const auth=await requireSession(request,env,['owner','admin']); if(auth.error)return auth.error;
+  const existing=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); if(!existing)return json({error:'Contenuto non trovato.'},404);
+  const item=cmsPayload(await body(request));
+  if(existing.repository_sha && existing.slug!==item.slug)return json({error:'Dopo la prima pubblicazione l’indirizzo non può essere cambiato dal CMS. Crea una nuova bozza per evitare collegamenti rotti.'},409);
+  try{await env.DB.prepare('UPDATE cms_contents SET slug=?,kind=?,title=?,description=?,category=?,body=?,tags_json=?,image=?,image_alt=?,updated_by=?,updated_at=CURRENT_TIMESTAMP WHERE id=?').bind(item.slug,item.kind,item.title,item.description,item.category,item.body,JSON.stringify(item.tags),item.image,item.imageAlt,auth.session.id,id).run();}
+  catch{return json({error:'Esiste già un contenuto con questo indirizzo.'},409);}
+  const row=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); await saveRevision(env,row,auth.session.id,'updated'); return json({content:cmsRow(row)});
+}
+async function cmsAsset(request,env) {
+  const auth=await requireSession(request,env,['owner']); if(auth.error)return auth.error;
+  if(!auth.session.totp_enabled)return json({error:'Prima attiva la verifica in due passaggi nella sezione Sicurezza.'},403);
+  const gate=requireRecentAuth(auth.session); if(gate)return gate;
+  const type=(request.headers.get('content-type')||'').split(';')[0].toLowerCase(),extensions={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif'};
+  if(!extensions[type])return json({error:'Formato immagine non supportato. Usa JPG, PNG, WebP o GIF.'},415);
+  if(Number(request.headers.get('content-length')||0)>5*1024*1024)return json({error:'La foto supera 5 MB.'},413);
+  const bytes=new Uint8Array(await request.arrayBuffer()); if(!bytes.length||bytes.length>5*1024*1024)return json({error:'Foto vuota o troppo grande.'},413);
+  const valid=type==='image/jpeg'&&bytes[0]===0xff&&bytes[1]===0xd8||type==='image/png'&&bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47||type==='image/webp'&&String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP'||type==='image/gif'&&String.fromCharCode(...bytes.slice(0,3))==='GIF';
+  if(!valid)return json({error:'Il contenuto del file non corrisponde a una foto valida.'},400);
+  const original=clean(decodeURIComponent(request.headers.get('x-file-name')||'immagine'),120).replace(/\.[^.]+$/,''),name=slugify(original)||'immagine',folder=new Date().toISOString().slice(0,7),path=`public/immagini/cms/${folder}/${name}-${randomToken(5)}.${extensions[type]}`;
+  await githubWrite(env,path,bytesBase64(bytes),`Aggiunge immagine CMS ${name}`,null,true);
+  await securityEvent(env,request,auth.session.id,'cms_asset_uploaded',path);
+  return json({path:`/${path.slice(7)}`},201);
+}
+async function cmsAction(request,env,id) {
+  const auth=await requireSession(request,env,['owner']); if(auth.error)return auth.error;
+  if(!auth.session.totp_enabled)return json({error:'Prima attiva la verifica in due passaggi nella sezione Sicurezza.'},403);
+  const gate=requireRecentAuth(auth.session); if(gate)return gate;
+  const row=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); if(!row)return json({error:'Contenuto non trovato.'},404);
+  const data=await body(request),action=data.action,item=cmsRow(row),filePath=`src/content/articoli/${item.slug}.md`;
+  if(action==='publish'||action==='hide'||action==='draft'||action==='trash'){
+    const target=action==='publish'?'published':action==='hide'?'hidden':action==='trash'?'trash':'draft',draft=target!=='published',remote=await githubFile(env,filePath);
+    if(remote&&!row.repository_sha)return json({error:'Esiste già un file del sito con questo indirizzo. Cambia l’indirizzo della bozza: il CMS non sovrascriverà contenuti esistenti.'},409);
+    if(remote&&row.repository_sha&&remote.sha!==row.repository_sha)return json({error:'Il file online è stato modificato fuori dal CMS. Pubblicazione fermata per non sovrascrivere il lavoro: controlla la versione su GitHub.'},409);
+    const result=await githubWrite(env,filePath,markdownFile(item,draft),`${target==='published'?'Pubblica':'Aggiorna'} ${item.title}`,remote?.sha);
+    await env.DB.prepare("UPDATE cms_contents SET status=?,repository_sha=?,published_at=CASE WHEN ?='published' THEN CURRENT_TIMESTAMP ELSE published_at END,deleted_at=CASE WHEN ?='trash' THEN CURRENT_TIMESTAMP ELSE NULL END,updated_by=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(target,result.content?.sha||null,target,target,auth.session.id,id).run();
+    const updated=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); await saveRevision(env,updated,auth.session.id,action); await securityEvent(env,request,auth.session.id,`cms_${action}`,item.slug); await notifyOwner(env,`Contenuto ${target} — Retro di testa`,`${item.title} è stato impostato come ${target}.`).catch(()=>{}); return json({content:cmsRow(updated)});
+  }
+  if(action==='restore'){await env.DB.prepare("UPDATE cms_contents SET status='draft',deleted_at=NULL,updated_by=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(auth.session.id,id).run();const updated=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first();await saveRevision(env,updated,auth.session.id,'restored');return json({content:cmsRow(updated)});}
+  return json({error:'Operazione non disponibile.'},400);
+}
+
 export async function onRequest(context) {
   const { request, env, params } = context;
   if (!env.DB) return json({ error: 'Database non configurato.' }, 503);
@@ -305,6 +528,11 @@ export async function onRequest(context) {
     if (path === 'auth/change-password' && request.method === 'POST') return changeOwnerPassword(request,env);
     if (path === 'auth/reset-request' && request.method === 'POST') return requestReset(request,env);
     if (path === 'auth/reset' && request.method === 'POST') return completeReset(request,env);
+    if (path === 'auth/reauth' && request.method === 'POST') return reauthenticate(request,env);
+    if (path === 'auth/totp/setup' && request.method === 'POST') return setupTotp(request,env);
+    if (path === 'auth/totp/confirm' && request.method === 'POST') return confirmTotp(request,env);
+    if (path === 'auth/security' && request.method === 'GET') return securityOverview(request,env);
+    if (path.startsWith('auth/sessions/') && request.method === 'DELETE') return revokeSession(request,env,path.slice(14));
     if (path === 'staff' && request.method === 'GET') return staffList(request,env);
     if (path === 'staff' && request.method === 'POST') return createStaff(request,env);
     if (path.startsWith('staff/') && request.method === 'PATCH') return updateStaff(request,env,path.slice(6));
@@ -317,6 +545,12 @@ export async function onRequest(context) {
     if (path === 'stats' && request.method === 'POST') return recordStat(request,env);
     if (path === 'stats/summary' && request.method === 'GET') return statsSummary(request,env);
     if (path === 'reactions' && ['GET','POST'].includes(request.method)) return reaction(request,env);
+    if (path === 'cms' && request.method === 'GET') return cmsList(request,env);
+    if (path === 'cms' && request.method === 'POST') return cmsCreate(request,env);
+    if (path === 'cms/assets' && request.method === 'POST') return cmsAsset(request,env);
+    if (path.startsWith('cms/') && path.endsWith('/action') && request.method === 'POST') return cmsAction(request,env,path.slice(4,-7));
+    if (path.startsWith('cms/') && request.method === 'GET') return cmsGet(request,env,path.slice(4));
+    if (path.startsWith('cms/') && request.method === 'PATCH') return cmsUpdate(request,env,path.slice(4));
     return json({ error:'Percorso non trovato.' },404);
   } catch (error) {
     console.error(error);

@@ -1,0 +1,30 @@
+---
+import '../../styles/global.css';
+---
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Guida CMS — Retro di testa</title>
+</head>
+<body>
+  <header><a href="/staff/cms/">← Torna al CMS</a><strong>Guida semplice del CMS</strong></header>
+  <main>
+    <section class="hero"><p>AREA STAFF · GUIDA</p><h1>Pubblicare senza toccare il codice.</h1><p>Questa guida ti accompagna dalla bozza alla pubblicazione e ti spiega sempre cosa succede al sito.</p></section>
+    <nav aria-label="Indice"><a href="#nuovo">Nuovo articolo</a><a href="#importa">Importare un file</a><a href="#anteprima">Anteprima</a><a href="#pubblica">Pubblicare</a><a href="#errori">Se sbagli</a><a href="#sicurezza">Sicurezza</a></nav>
+    <section id="nuovo"><span>1</span><div><h2>Creare un nuovo contenuto</h2><ol><li>Apri <strong>Nuovo contenuto</strong>.</li><li>Inserisci titolo, descrizione breve e testo.</li><li>Controlla l’indirizzo della pagina: usa parole semplici separate da trattini.</li><li>Premi <strong>Salva bozza</strong>. La bozza è privata e non compare sul sito.</li></ol></div></section>
+    <section id="importa"><span>2</span><div><h2>Importare Word, PDF, HTML, Markdown, testo o ZIP</h2><ol><li>Apri la scheda <strong>Importa file</strong>.</li><li>Scegli il documento dal computer.</li><li>Il CMS estrae il testo nel tuo browser e lo inserisce nella bozza.</li><li>Rileggi sempre il risultato: PDF scannerizzati e documenti complessi possono richiedere correzioni.</li></ol><aside>L’originale non viene pubblicato. Il CMS salva soltanto il contenuto che controlli e confermi.</aside></div></section>
+    <section id="anteprima"><span>3</span><div><h2>Controllare entrambe le grafiche</h2><p>Premi <strong>Anteprima</strong> e passa da <strong>Cosmo</strong> a <strong>Retro 95–99</strong>. È lo stesso articolo: cambia soltanto il vestito grafico. L’anteprima non pubblica nulla.</p></div></section>
+    <section id="pubblica"><span>4</span><div><h2>Pubblicare</h2><ol><li>Salva prima la bozza.</li><li>Premi <strong>Pubblica</strong>.</li><li>Conferma nuovamente password e codice a due fattori.</li><li>Il CMS crea il file nel sito e avvia l’aggiornamento. Dopo alcuni minuti la pagina sarà online e verrà aggiunta automaticamente alla sitemap.</li></ol></div></section>
+    <section id="errori"><span>5</span><div><h2>Se pubblichi per sbaglio</h2><ul><li><strong>Nascondi:</strong> la pagina sparisce dal sito ma resta modificabile.</li><li><strong>Cestino:</strong> la pagina viene ritirata e resta recuperabile.</li><li><strong>Ripristina:</strong> il contenuto torna fra le bozze.</li></ul><aside>La cancellazione definitiva è disattivata finché non esiste un backup verificato. Così un errore non distrugge il lavoro.</aside></div></section>
+    <section id="sicurezza"><span>6</span><div><h2>Proteggere lo Staff</h2><ol><li>Usa una password lunga e unica.</li><li>Attiva la verifica in due passaggi da <strong>Sicurezza</strong>.</li><li>Conserva i codici di recupero fuori dal sito.</li><li>Controlla le sessioni aperte e chiudi quelle che non riconosci.</li><li>Non inviare password o codici via messaggio.</li></ol></div></section>
+    <section class="finish"><h2>La regola più importante</h2><p><strong>Bozza → Anteprima → Controllo → Pubblica.</strong> Finché non premi Pubblica e non riconfermi la tua identità, il contenuto non è visibile al pubblico.</p><a href="/staff/cms/">Apri il CMS →</a></section>
+  </main>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 15%,#fff 0 1px,transparent 2px),linear-gradient(145deg,#07111f,#173456);background-size:250px 250px,auto;color:#eff6ff;font:17px/1.65 system-ui,sans-serif}header{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100% - 1100px)/2));background:#071321e8;border-bottom:1px solid #3a5574;position:sticky;top:0;z-index:3}header a{color:#71e1f3}main{width:min(1100px,calc(100% - 28px));margin:0 auto 80px}.hero{display:block!important;padding:80px 20px 48px!important;background:transparent!important;border:0!important}.hero p:first-child{color:#71e1f3;letter-spacing:.18em;font-weight:900}.hero h1{font-size:clamp(45px,8vw,88px);line-height:.95;letter-spacing:-.055em;margin:.2em 0}.hero p:last-child{font-size:22px;color:#bdd0e5;max-width:730px}nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}nav a{padding:9px 13px;border:1px solid #486584;border-radius:999px;color:#ddecff;text-decoration:none;background:#0b1c30}main>section:not(.hero){display:grid;grid-template-columns:66px minmax(0,1fr);gap:22px;padding:30px;margin:16px 0;background:#10233be8;border:1px solid #3b5777;border-radius:18px}section>span{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#6de0f3;color:#071525;font-size:25px;font-weight:950}h2{font-size:32px;margin:0 0 12px}li{margin:8px 0}aside{padding:16px 18px;border-left:5px solid #ffd25e;background:#ffd25e18;margin-top:18px}.finish{display:block!important;text-align:center!important;background:linear-gradient(135deg,#16618b,#6d1a73)!important;padding:48px!important}.finish a{display:inline-block;padding:13px 20px;border-radius:10px;background:#fff;color:#071525;text-decoration:none;font-weight:900}@media(max-width:650px){header strong{display:none}.hero{padding-top:55px!important}main>section:not(.hero){grid-template-columns:1fr;padding:22px}.finish{padding:30px 20px!important}}
+  </style>
+  <script>fetch('/api/auth/me').then(r=>{if(!r.ok)location.href='/staff/';}).catch(()=>location.href='/staff/');</script>
+</body>
+</html>
