@@ -429,7 +429,7 @@ const cmsCategories = ['guide','soluzioni','test','recensioni'];
 const slugify = value => clean(value,180).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,140);
 const safeMarkdown = value => {
   const text = String(value || '').replace(/\0/g,'').slice(0,250000);
-  if (/<\s*(script|style|object|embed|iframe|form|input|button|meta|link)\b/i.test(text) || /\bon\w+\s*=|javascript\s*:/i.test(text)) throw new Error('Il testo contiene codice non consentito. Incolla soltanto testo, titoli, elenchi e collegamenti sicuri.');
+  if (/<\s*(script|style|object|embed|iframe|form|input|button|meta|link|base|foreignObject|use|animate|set)\b/i.test(text) || /\bon\w+\s*=|javascript\s*:|vbscript\s*:|data\s*:\s*text\/html|style\s*=\s*["'][^"']*url\s*\(/i.test(text)) throw new Error('Il testo contiene codice non consentito. Incolla soltanto contenuti e grafiche sicure.');
   return text;
 };
 const cmsPayload = data => {
@@ -457,6 +457,11 @@ async function githubWrite(env,path,content,message,sha,preEncoded=false) {
   const cfg=githubConfig(env); if(!cfg.token) throw new Error('Pubblicazione non configurata: manca l’autorizzazione limitata a GitHub.');
   const response=await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${path}`,{method:'PUT',headers:{Authorization:`Bearer ${cfg.token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'retro-di-testa-cms'},body:JSON.stringify({message,content:preEncoded?content:utf8Base64(content),branch:cfg.branch,...(sha?{sha}:{})})});
   if(!response.ok)throw new Error('GitHub non ha accettato la pubblicazione. Nessuna copia locale è stata persa.'); return response.json();
+}
+async function githubDelete(env,path,message,sha) {
+  const cfg=githubConfig(env); if(!cfg.token) throw new Error('Pubblicazione non configurata: manca l’autorizzazione limitata a GitHub.');
+  const response=await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${path}`,{method:'DELETE',headers:{Authorization:`Bearer ${cfg.token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'retro-di-testa-cms'},body:JSON.stringify({message,sha,branch:cfg.branch})});
+  if(!response.ok)throw new Error('GitHub non ha accettato la cancellazione. Il contenuto è rimasto nel cestino.');
 }
 async function cmsList(request,env) {
   const auth=await requireSession(request,env,['owner','admin']); if(auth.error)return auth.error;
@@ -513,6 +518,16 @@ async function cmsAction(request,env,id) {
     const updated=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first(); await saveRevision(env,updated,auth.session.id,action); await securityEvent(env,request,auth.session.id,`cms_${action}`,item.slug); await notifyOwner(env,`Contenuto ${target} — Retro di testa`,`${item.title} è stato impostato come ${target}.`).catch(()=>{}); return json({content:cmsRow(updated)});
   }
   if(action==='restore'){await env.DB.prepare("UPDATE cms_contents SET status='draft',deleted_at=NULL,updated_by=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(auth.session.id,id).run();const updated=await env.DB.prepare('SELECT * FROM cms_contents WHERE id=?').bind(id).first();await saveRevision(env,updated,auth.session.id,'restored');return json({content:cmsRow(updated)});}
+  if(action==='delete'){
+    if(row.status!=='trash')return json({error:'Prima sposta il contenuto nel cestino.'},409);
+    const remote=await githubFile(env,filePath);
+    if(remote&&row.repository_sha&&remote.sha!==row.repository_sha)return json({error:'Il file è stato modificato fuori dal CMS. Cancellazione fermata per evitare di eliminare una versione diversa.'},409);
+    if(remote)await githubDelete(env,filePath,`Elimina definitivamente ${item.title}`,remote.sha);
+    await env.DB.prepare('DELETE FROM cms_revisions WHERE content_id=?').bind(id).run();
+    await env.DB.prepare('DELETE FROM cms_contents WHERE id=?').bind(id).run();
+    await securityEvent(env,request,auth.session.id,'cms_deleted_permanently',item.slug);
+    return json({deleted:true});
+  }
   return json({error:'Operazione non disponibile.'},400);
 }
 
