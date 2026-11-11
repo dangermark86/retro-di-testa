@@ -14,6 +14,11 @@ html[data-site-mode=retro] :is(.article,.archive,.projects-page,.project-page,.g
 @media(max-width:600px){.header-mode-button{min-width:112px;padding:0 10px;font-size:8px}.mode-led{width:9px;height:9px}.brand-logo-stage:after{inset:-4px}}@media(prefers-reduced-motion:reduce){.brand-logo-stage:after,.mode-led,html[data-site-mode=cosmo] body:before,html[data-site-mode=retro] .brand-logo{animation:none!important}}
 
 /* Footer Retro sempre leggibile, anche prima del passaggio del mouse. */
+html[data-site-mode=cosmo] .footer{background:#081525!important;color:#f3f7ff!important;border-top:1px solid #38506d!important}
+html[data-site-mode=cosmo] .footer p,html[data-site-mode=cosmo] .footer small{color:#b7c6db!important}
+html[data-site-mode=cosmo] .footer a,html[data-site-mode=cosmo] .footer a:visited{color:#79dcf0!important;text-decoration:none}
+html[data-site-mode=cosmo] .footer a:hover,html[data-site-mode=cosmo] .footer a:focus-visible{color:#fff!important;text-decoration:underline}
+html[data-site-mode=cosmo] .footer .footer-brand,html[data-site-mode=cosmo] .footer .footer-brand:visited{color:#fff!important}
 html[data-site-mode=retro] .footer{background:#000!important;color:#00ffff!important;border:3px ridge #00ffff!important}
 html[data-site-mode=retro] .footer p,html[data-site-mode=retro] .footer small{color:#d7ffff!important}
 html[data-site-mode=retro] .footer a,html[data-site-mode=retro] .footer a:visited{color:#00ffff!important;text-decoration:underline!important}
