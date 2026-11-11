@@ -4,7 +4,7 @@ title: "retro di testa usb inline"
 description: "dsd"
 category: "guide"
 date: "2026-11-11"
-draft: false
+draft: true
 tags: []
 ---
 
