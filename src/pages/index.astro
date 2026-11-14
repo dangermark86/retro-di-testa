@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageViewTracker from '../components/PageViewTracker.astro';
 import { articles } from '../lib/content';
 const all = await articles();
-const latest = all.find(a => a.id === 'da-huawei-p30-pro-a-iphone-18-pro') || all.find(a => a.data.section !== 'domande');
+const latest = all.find(a => a.id === 'gta6-30fps-io-aspetto-il-pc') || all.find(a => a.data.section !== 'domande');
 const problem = all.find(a => a.id === 'nas-per-famiglia');
 const curiosity = all.find(a => a.id === 'raid-spazio-livelli');
 const formatDate = (date: Date) => new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
@@ -18,7 +18,7 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat('it-IT', { day: 'nume
     <p>Sono Marco Sala. Provo la tecnologia nell’uso reale, risolvo problemi e costruisco progetti quando quello che esiste non mi basta.</p>
     <div class="cinema-actions"><a class="cinema-button primary" href="/progetti/">Entra nel laboratorio ↗</a><a class="cinema-button" href={latest ? `/articoli/${latest.id}/` : '/articoli/'}>Leggi l’ultima prova</a></div>
   </div>
-  {latest && <a class="cinema-hero-image" href={`/articoli/${latest.id}/`}><span>PROVATO DAVVERO</span><img src={latest.data.image} alt={latest.data.imageAlt || ''}/><time datetime={latest.data.date.toISOString()}>RECENSIONE · {formatDate(latest.data.date).toUpperCase()}</time></a>}
+  {latest && <a class="cinema-hero-image" href={`/articoli/${latest.id}/`}><span>ULTIMO CONTENUTO</span><img src={latest.data.image} alt={latest.data.imageAlt || ''}/><time datetime={latest.data.date.toISOString()}>PUBBLICATO · {formatDate(latest.data.date).toUpperCase()}</time></a>}
 </section>
 <section class="cinema-rail wrap" aria-label="Percorsi principali">
   <a href="/articoli/"><b>01</b><span><strong>Ho un problema</strong><small>Soluzioni nate dall’esperienza reale</small></span></a>
