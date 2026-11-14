@@ -27,3 +27,22 @@ html[data-site-mode=retro] .footer .footer-brand,html[data-site-mode=retro] .foo
 
 /* Contenuti ricchi importati dal CMS. */
 .cms-rich{max-width:100%;overflow-wrap:anywhere}.cms-rich img,.cms-rich svg,.cms-rich video{max-width:100%;height:auto}.cms-rich figure{max-width:100%;margin:1.5rem 0}.cms-rich table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse}.cms-rich td,.cms-rich th{border:1px solid currentColor;padding:.55rem}.cms-rich>*:first-child{margin-top:0}
+/* Contrasto stabile: i link sono leggibili anche senza hover. */
+html[data-site-mode=cosmo] .article,html[data-site-mode=cosmo] .archive,html[data-site-mode=cosmo] .project-page,html[data-site-mode=cosmo] .guide-archive{color:#f3f7ff!important}
+html[data-site-mode=cosmo] .article a,html[data-site-mode=cosmo] .archive a,html[data-site-mode=cosmo] .project-page a,html[data-site-mode=cosmo] .guide-archive a{color:#79dcf0!important}
+html[data-site-mode=cosmo] .article a:hover,html[data-site-mode=cosmo] .archive a:hover,html[data-site-mode=cosmo] .project-page a:hover,html[data-site-mode=cosmo] .guide-archive a:hover{color:#ffffff!important}
+html[data-site-mode=cosmo] .article h1,html[data-site-mode=cosmo] .article h2,html[data-site-mode=cosmo] .article h3,html[data-site-mode=cosmo] .archive h1,html[data-site-mode=cosmo] .archive h2{color:#f3f7ff!important}
+html[data-site-mode=cosmo] .footer a{color:#d8eaff!important}html[data-site-mode=cosmo] .footer a:hover{color:#79dcf0!important}
+
+/* Modalità lettura: contenuti editoriali chiari e riposanti. */
+html[data-site-mode=cosmo] body:has(.article,.archive,.project-page,.guide-archive){background:#f7f8fa!important;color:#172033!important}
+html[data-site-mode=cosmo] :is(.article,.archive,.project-page,.guide-archive){background:#f7f8fa!important;color:#172033!important;border-color:#e1e6ee!important;box-shadow:none!important}
+html[data-site-mode=cosmo] :is(.article h1,.article h2,.article h3,.archive h1,.archive h2,.project-page h1,.project-page h2,.project-page h3,.guide-archive h1,.guide-archive h2){color:#0d1b31!important;text-shadow:none!important}
+html[data-site-mode=cosmo] :is(.article p,.archive p,.project-page p,.guide-archive p,.prose){color:#26354b!important}
+html[data-site-mode=cosmo] :is(.article .muted,.archive .muted,.project-page .muted,.guide-archive .muted,.article-image figcaption){color:#536174!important}
+html[data-site-mode=cosmo] :is(.article a,.archive a,.project-page a,.guide-archive a,.prose a){color:#2563eb!important}
+html[data-site-mode=cosmo] :is(.article a:hover,.archive a:hover,.project-page a:hover,.guide-archive a:hover,.prose a:hover){color:#1747b8!important}
+html[data-site-mode=cosmo] :is(.article-card,.project-card,.project-topic,.project-next,.guide-card,.question-card,.article-actions,.comments,.filters a,.search){background:#fff!important;color:#172033!important;border-color:#dfe5ef!important;box-shadow:0 8px 24px #17203312!important}
+html[data-site-mode=cosmo] :is(.article-card h3,.project-card h3,.project-topic h3,.guide-card h3,.question-card h3){color:#0d1b31!important}
+html[data-site-mode=cosmo] :is(.article-card p,.project-card p,.project-topic p,.guide-card p,.question-card p){color:#536174!important}
+html[data-site-mode=cosmo] .article-image img{background:#eef1f5!important}
