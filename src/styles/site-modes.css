@@ -46,3 +46,11 @@ html[data-site-mode=cosmo] :is(.article-card,.project-card,.project-topic,.proje
 html[data-site-mode=cosmo] :is(.article-card h3,.project-card h3,.project-topic h3,.guide-card h3,.question-card h3){color:#0d1b31!important}
 html[data-site-mode=cosmo] :is(.article-card p,.project-card p,.project-topic p,.guide-card p,.question-card p){color:#536174!important}
 html[data-site-mode=cosmo] .article-image img{background:#eef1f5!important}
+
+/* Controlli editoriali: stato normale bianco, blu solo al passaggio del mouse. */
+html[data-site-mode=cosmo] :is(.article-actions button,.comments .button,.comment-votes button,.article-actions [data-copy-link]){background:#fff!important;color:#172033!important;border:1px solid #cbd5e5!important;box-shadow:none!important}
+html[data-site-mode=cosmo] :is(.article-actions button:hover,.article-actions button[aria-pressed=true],.comments .button:hover,.comment-votes button:hover,.comment-votes button[aria-pressed=true],.article-actions [data-copy-link]:hover){background:#eaf0ff!important;color:#2563eb!important;border-color:#2563eb!important}
+html[data-site-mode=cosmo] :is(.comment-form input,.comment-form textarea,.article-actions input){background:#fff!important;color:#172033!important;border:1px solid #cbd5e5!important}
+html[data-site-mode=retro] :is(.article-actions button,.comments .button,.comment-votes button,.article-actions [data-copy-link]){background:#fff!important;color:#071a36!important;border:2px outset #dcecff!important;box-shadow:none!important}
+html[data-site-mode=retro] :is(.article-actions button:hover,.article-actions button[aria-pressed=true],.comments .button:hover,.comment-votes button:hover,.comment-votes button[aria-pressed=true],.article-actions [data-copy-link]:hover){background:#eaf0ff!important;color:#003fd1!important;border:2px outset #79dcf0!important}
+html[data-site-mode=retro] :is(.comment-form input,.comment-form textarea,.article-actions input){background:#fff!important;color:#071a36!important;border:2px inset #c0c0c0!important}
