@@ -322,7 +322,7 @@ async function deleteStaff(request, env, id) {
 
 async function publicComments(request, env) {
   const url = new URL(request.url), contentId = clean(url.searchParams.get('contentId'), 140), hash = await visitorHash(request, env, 'comment-reaction');
-  const result = await env.DB.prepare("SELECT c.id,c.author,c.body,c.country,c.featured,c.likes,c.dislikes,c.created_at,COALESCE(r.value,0) mine FROM comments c LEFT JOIN comment_reactions r ON r.comment_id=c.id AND r.visitor_hash=? WHERE c.content_id=? AND c.status='published' ORDER BY c.featured DESC,c.created_at DESC LIMIT 100").bind(hash,contentId).all();
+  const result = await env.DB.prepare("SELECT c.id,c.author,c.body,c.country,c.featured,c.likes,c.dislikes,c.created_at,c.reply_body,c.reply_author,c.replied_at,COALESCE(r.value,0) mine FROM comments c LEFT JOIN comment_reactions r ON r.comment_id=c.id AND r.visitor_hash=? WHERE c.content_id=? AND c.status='published' ORDER BY c.featured DESC,c.created_at DESC LIMIT 100").bind(hash,contentId).all();
   return json({ comments: result.results });
 }
 
@@ -353,6 +353,13 @@ async function staffComments(request, env) {
 async function updateComment(request, env, id) {
   const auth = await requireSession(request, env, ['owner','admin','moderator']); if (auth.error) return auth.error;
   const data = await body(request), action = data.action;
+  if (action === 'reply') {
+    const message = clean(data.body, 1500);
+    if (message.length < 2) return json({ error: 'Scrivi una risposta.' }, 400);
+    await env.DB.prepare("UPDATE comments SET reply_body=?,reply_author='Retro di testa · Amministratore',replied_at=CURRENT_TIMESTAMP,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(message,id).run();
+    await securityEvent(env,request,auth.session.id,'comment_reply',id);
+    return json({ ok: true });
+  }
   const sql = action === 'delete' ? "UPDATE comments SET status='trash',updated_at=CURRENT_TIMESTAMP WHERE id=?" : action === 'restore' ? "UPDATE comments SET status='published',updated_at=CURRENT_TIMESTAMP WHERE id=?" : action === 'feature' ? "UPDATE comments SET featured=CASE featured WHEN 1 THEN 0 ELSE 1 END,updated_at=CURRENT_TIMESTAMP WHERE id=?" : null;
   if (!sql) return json({ error: 'Operazione non valida.' }, 400);
   await env.DB.prepare(sql).bind(id).run(); return json({ ok: true });
