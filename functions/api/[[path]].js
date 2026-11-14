@@ -9,6 +9,14 @@ const json = (data, status = 200, headers = {}) => new Response(JSON.stringify(d
 const hex = bytes => Array.from(new Uint8Array(bytes), value => value.toString(16).padStart(2, '0')).join('');
 const randomToken = (size = 32) => hex(crypto.getRandomValues(new Uint8Array(size)));
 const sha256 = async value => hex(await crypto.subtle.digest('SHA-256', encoder.encode(value)));
+const timingSafeEqual = async (left, right) => {
+  const a = encoder.encode(String(left || ''));
+  const b = encoder.encode(String(right || ''));
+  let diff = a.length ^ b.length;
+  const length = Math.max(a.length, b.length);
+  for (let index = 0; index < length; index += 1) diff |= (a[index] || 0) ^ (b[index] || 0);
+  return diff === 0;
+};
 const passwordHash = async (password, salt) => {
   const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
   return hex(await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: encoder.encode(salt), iterations: 100000, hash: 'SHA-256' }, key, 256));
@@ -326,8 +334,13 @@ async function publicComments(request, env) {
   return json({ comments: result.results });
 }
 
+const commentSession = async (request, env) => { const token = request.headers.get('cookie')?.match(/rtd_comment=([^;]+)/)?.[1]; if (!token) return null; return env.DB.prepare("SELECT email FROM comment_sessions WHERE token_hash=? AND expires_at>CURRENT_TIMESTAMP").bind(await sha256(token)).first(); };
+async function requestCommentLogin(request, env) { const data=await body(request), email=clean(data.email,160).toLowerCase(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return json({error:'Inserisci un indirizzo email valido.'},400); if(!env.MAILER||!env.MAILER_TOKEN)return json({error:'Accesso email non configurato sul server.'},503); const code=String(Math.floor(100000+Math.random()*900000)), hash=await sha256(code+email); await env.DB.prepare("INSERT INTO comment_login_codes(email,code_hash,expires_at) VALUES(?,?,datetime('now','+10 minutes')) ON CONFLICT(email) DO UPDATE SET code_hash=excluded.code_hash,expires_at=excluded.expires_at,attempts=0").bind(email,hash).run(); await env.MAILER.fetch('https://mailer.internal/send',{method:'POST',headers:{Authorization:`Bearer ${env.MAILER_TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({to:email,subject:'Codice per commentare su Retro di testa',text:`Il tuo codice è ${code}. Scade tra 10 minuti.`})}); return json({ok:true}); }
+async function verifyCommentLogin(request, env) { const data=await body(request),email=clean(data.email,160).toLowerCase(),code=clean(data.code,12),row=await env.DB.prepare('SELECT * FROM comment_login_codes WHERE email=?').bind(email).first(); if(!row||row.attempts>=5||new Date(`${row.expires_at}Z`).getTime()<Date.now()||!await timingSafeEqual(await sha256(code+email),row.code_hash)) { if(row) await env.DB.prepare('UPDATE comment_login_codes SET attempts=attempts+1 WHERE email=?').bind(email).run(); return json({error:'Codice non valido o scaduto.'},401); } const token=randomToken(32); await env.DB.prepare("INSERT INTO comment_sessions(token_hash,email,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(await sha256(token),email).run(); return new Response(JSON.stringify({ok:true,email}),{status:200,headers:{'content-type':'application/json','set-cookie':`rtd_comment=${token}; Path=/; Max-Age=2592000; Secure; HttpOnly; SameSite=Lax`}}); }
+
 async function createComment(request, env) {
   if (!mutationAllowed(request)) return json({ error: 'Origine non valida.' }, 403);
+  const session=await commentSession(request,env); if(!session?.email)return json({error:'Accedi con email verificata prima di commentare.',loginRequired:true},401);
   const data = await body(request), contentId = clean(data.contentId, 140), title = clean(data.contentTitle, 180), type = data.contentType === 'Progetto' ? 'Progetto' : 'Articolo', author = clean(data.author, 60), message = clean(data.body, 1500);
   if (!contentId || !title || author.length < 2 || message.length < 3) return json({ error: 'Compila nome e commento.' }, 400);
   if (data.website) return json({ ok: true }, 201);
@@ -561,6 +574,8 @@ export async function onRequest(context) {
     if (path.startsWith('staff/') && request.method === 'DELETE') return deleteStaff(request,env,path.slice(6));
     if (path === 'comments' && request.method === 'GET') return publicComments(request,env);
     if (path === 'comments' && request.method === 'POST') return createComment(request,env);
+    if (path === 'comment-auth/request' && request.method === 'POST') return requestCommentLogin(request,env);
+    if (path === 'comment-auth/verify' && request.method === 'POST') return verifyCommentLogin(request,env);
     if (path === 'staff-comments' && request.method === 'GET') return staffComments(request,env);
     if (path.startsWith('comments/') && path.endsWith('/reaction') && request.method === 'POST') return commentReaction(request,env,path.slice(9,-9));
     if (path.startsWith('comments/') && request.method === 'PATCH') return updateComment(request,env,path.slice(9));
