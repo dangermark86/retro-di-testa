@@ -7,8 +7,9 @@ parent: "hp-microserver-n40l-2026"
 date: "2026-10-12"
 draft: false
 tags: ["Domande e curiosità", "NAS"]
-image: "/immagini/lightscribe-lettore-marco.webp"
-imageAlt: "Dettaglio del mio masterizzatore CD e DVD nel N40L, con logo LightScribe sul cassetto"
+image: "/immagini/lightscribe-disco-verbatim.png"
+imageAlt: "Disco Verbatim CD-R LightScribe dorato visto dall’alto"
+imageCaption: "Un supporto CD-R LightScribe dorato: il rivestimento era pronto per essere inciso dal laser del masterizzatore."
 ---
 
 Rivedere il logo **LightScribe** sul lettore del mio N40L mi ha riportato a un periodo in cui personalizzare un CD o un DVD faceva parte del piacere di masterizzarlo. Per me era una tecnologia incredibile: non avevo più soltanto un disco con dei dati, ma un oggetto con la sua grafica.

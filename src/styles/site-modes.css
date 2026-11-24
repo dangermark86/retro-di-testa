@@ -43,6 +43,9 @@ html[data-site-mode=cosmo] :is(.article .muted,.archive .muted,.project-page .mu
 html[data-site-mode=cosmo] :is(.article a,.archive a,.project-page a,.guide-archive a,.prose a){color:#2563eb!important}
 html[data-site-mode=cosmo] :is(.article a:hover,.archive a:hover,.project-page a:hover,.guide-archive a:hover,.prose a:hover){color:#1747b8!important}
 html[data-site-mode=cosmo] :is(.article-card,.project-card,.project-topic,.project-next,.guide-card,.question-card,.article-actions,.comments,.filters a,.search){background:#fff!important;color:#172033!important;border-color:#dfe5ef!important;box-shadow:0 8px 24px #17203312!important}
+/* Le anteprime private devono restare leggibili in entrambe le modalità. */
+html[data-site-mode=cosmo] .draft-notice,html[data-site-mode=retro] .draft-notice{background:#eaf0ff!important;color:#18324f!important;border:1px solid #b8caf0!important;border-left:6px solid #3159e8!important;border-radius:12px!important;box-shadow:none!important}
+html[data-site-mode=cosmo] .draft-notice p,html[data-site-mode=retro] .draft-notice p{color:#536981!important}
 html[data-site-mode=cosmo] :is(.article-card h3,.project-card h3,.project-topic h3,.guide-card h3,.question-card h3){color:#0d1b31!important}
 html[data-site-mode=cosmo] :is(.article-card p,.project-card p,.project-topic p,.guide-card p,.question-card p){color:#536174!important}
 html[data-site-mode=cosmo] .article-image img{background:#eef1f5!important}
@@ -119,4 +122,94 @@ html[data-site-mode=cosmo] .cinema-manifesto p{
   line-height:1.22!important;
   letter-spacing:-1px!important;
   word-spacing:.08em;
+}
+
+/* Contrasto finale per il confronto "Compro / Me lo stampo".
+   Deve restare chiaro in entrambe le modalità e non perdere testo o icone. */
+html[data-site-mode=cosmo] .article .prose .make-or-buy,
+html[data-site-mode=retro] .article .prose .make-or-buy{
+  background:#f7f9fc!important;
+  border:1px solid #cbd7e6!important;
+  border-radius:16px!important;
+  box-shadow:0 10px 22px #18324f12!important;
+  overflow:hidden!important;
+}
+html[data-site-mode=cosmo] .article .prose .make-or-buy article,
+html[data-site-mode=retro] .article .prose .make-or-buy article,
+html[data-site-mode=cosmo] .article .prose .make-or-buy article:last-child,
+html[data-site-mode=retro] .article .prose .make-or-buy article:last-child{
+  background:#fff!important;
+  color:#18324f!important;
+  border:0!important;
+  border-bottom:4px solid #3159e8!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+html[data-site-mode=cosmo] .article .prose .make-or-buy h3,
+html[data-site-mode=retro] .article .prose .make-or-buy h3{color:#102947!important;text-shadow:none!important}
+html[data-site-mode=cosmo] .article .prose .make-or-buy p,
+html[data-site-mode=retro] .article .prose .make-or-buy p,
+html[data-site-mode=cosmo] .article .prose .make-or-buy article:last-child p,
+html[data-site-mode=retro] .article .prose .make-or-buy article:last-child p{color:#536981!important}
+html[data-site-mode=cosmo] .article .prose .make-or-buy>div,
+html[data-site-mode=retro] .article .prose .make-or-buy>div{background:#3159e8!important;color:#fff!important}
+
+/* L'immagine hero del confronto è panoramica: contain evita di tagliare
+   le nuvolette "COMPRO" e "ME LO STAMPO". */
+.article-image img[src*="stampa-3d-comprare-o-stampare"]{
+  height:auto!important;
+  aspect-ratio:3 / 2!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+}
+
+/* Layout mobile: il sito resta leggibile anche in verticale. Le sole tabelle
+   molto larghe scorrono orizzontalmente dentro il loro contenitore. */
+@media(max-width:700px){
+  html,body{overflow-x:hidden!important}
+  .wrap{width:100%!important;max-width:100%!important;padding-left:18px!important;padding-right:18px!important}
+  .header{min-height:80px!important;padding:12px 18px!important}
+  .brand-logo{width:56px!important;height:56px!important}
+  .header-actions{gap:6px!important}
+  .header-actions .menu-toggle{min-height:42px!important;padding:0 12px!important}
+  .article{padding-top:24px!important}
+  .article-head{padding-top:16px!important}
+  .article-head h1{font-size:clamp(30px,9vw,42px)!important;letter-spacing:-1.4px!important;line-height:1.05!important;overflow-wrap:anywhere!important}
+  .article-head .lead{font-size:17px!important;line-height:1.55!important;overflow-wrap:anywhere!important}
+  .article-body{display:block!important;margin-top:28px!important}
+  .toc{margin-bottom:24px!important}
+  .toc nav{display:block!important}
+  .toc nav a{display:block!important;margin:8px 0!important}
+  .prose{max-width:100%!important;font-size:16px!important;line-height:1.72!important;overflow-wrap:anywhere!important}
+  .prose h2{font-size:26px!important;line-height:1.12!important;overflow-wrap:anywhere!important}
+  .prose h3{font-size:21px!important;line-height:1.2!important;overflow-wrap:anywhere!important}
+  .article-image{margin:24px 0!important;padding:8px!important;max-width:100%!important}
+  .article-image img{max-width:100%!important}
+  .prose figure,.prose .article-photo,.prose .article-diagram{max-width:100%!important;overflow:hidden!important}
+  .prose figure img,.prose .article-photo img,.prose .article-diagram img{max-width:100%!important;height:auto!important;object-fit:contain!important}
+  .prose table{display:block!important;max-width:100%!important;overflow-x:auto!important;font-size:13px!important;min-width:0!important}
+  .prose table th,.prose table td{min-width:120px!important;padding:10px!important}
+  .make-or-buy{display:grid!important;grid-template-columns:1fr!important;margin:28px 0!important}
+  .make-or-buy>div{min-height:44px!important}
+  .print-cost-panel,.printer-timeline{margin-left:0!important;margin-right:0!important}
+}
+
+/* Domande in evidenza: mai testo blu scuro su pannello blu scuro. */
+html[data-site-mode=cosmo] .article .prose blockquote,
+html[data-site-mode=retro] .article .prose blockquote,
+.article .prose blockquote{
+  background:#f7f9fc!important;
+  color:#18324f!important;
+  border:1px solid #cbd7e6!important;
+  border-left:6px solid #3159e8!important;
+  border-radius:14px!important;
+  box-shadow:0 10px 22px #18324f12!important;
+  padding:22px 28px!important;
+}
+html[data-site-mode=cosmo] .article .prose blockquote strong,
+html[data-site-mode=retro] .article .prose blockquote strong,
+.article .prose blockquote strong{
+  color:#102947!important;
+  text-shadow:none!important;
 }

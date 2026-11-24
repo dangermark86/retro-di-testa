@@ -7,9 +7,9 @@ parent: "hp-microserver-n40l-2026"
 date: "2026-10-12"
 draft: false
 tags: ["Domande e curiosità", "NAS"]
-image: "/immagini/nas-raid.png"
-imageAlt: "Illustrazione generata con IA: una persona riflette sui RAID 0, 1, 5, 6 e 10 accanto a un NAS bianco"
-imageCaption: "Illustrazione creata con IA"
+image: "/immagini/n40l/dischi.webp"
+imageAlt: "Dischi e SSD utilizzati nel server per confrontare spazio e ridondanza RAID"
+imageCaption: "I dischi reali del progetto: il RAID cambia il modo in cui spazio e ridondanza vengono distribuiti."
 ---
 
 Quando organizzo più dischi, la capacità disponibile dipende da come li uso insieme. Due dischi uguali possono sommare lo spazio oppure contenere gli stessi dati. Vale per unità da 1 TB, 2 TB o altre capacità: è il livello RAID a cambiare il risultato.

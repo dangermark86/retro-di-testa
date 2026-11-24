@@ -7,9 +7,9 @@ parent: "hp-microserver-n40l-2026"
 date: "2026-10-12"
 draft: false
 tags: ["Domande e curiosità", "NAS"]
-image: "/immagini/nas-famiglia.png"
-imageAlt: "Illustrazione generata con IA: padre e figlia al computer con un NAS domestico a quattro vani"
-imageCaption: "Illustrazione creata con IA"
+image: "/immagini/n40l/frontale.webp"
+imageAlt: "Il MicroServer N40L utilizzato come archivio di rete domestico"
+imageCaption: "Il server reale che ho trasformato in archivio di rete per la famiglia."
 ---
 
 Il mio progetto nasce dalle foto, dai video e dai documenti di famiglia. Cercavo un posto comune per conservarli e raggiungerli dai dispositivi di casa: è questo il motivo per cui ho trasformato il mio N40L in un archivio di rete.

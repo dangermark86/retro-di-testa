@@ -5,9 +5,9 @@ category: "test"
 date: "2026-10-20"
 draft: false
 tags: ["Stampa 3D", "Esperienza", "Progettazione", "Fai da te"]
-image: "/immagini/progetti/music-essence-0.webp"
-imageAlt: "Diffusore Music Essence progettato da Marco Sala e costruito con un cabinet stampato in 3D"
-imageCaption: "Music Essence è uno dei progetti nei quali la stampa 3D ha smesso di essere un passatempo ed è diventata uno strumento per costruire qualcosa che non esisteva. Fotografia di Retro di testa."
+image: "/immagini/stampa-3d/stampa-3d-comprare-o-stampare.png"
+imageAlt: "Persona pensierosa davanti alla scelta tra comprare un oggetto o stamparlo in 3D"
+imageCaption: "Comprare o stampare? La stessa domanda con due strade diverse: prezzo da una parte, progetto e stampante dall’altra. Immagine creata con IA da Retro di testa."
 ---
 
 Nel 2012 seguivo già il mondo **RepRap** e osservavo con curiosità quelle macchine costruite con profilati, cavi in vista e componenti che oggi sembrano appartenere a un'altra epoca. Erano molto diverse dalle stampanti attuali. Richiedevano pazienza, regolazioni e una certa voglia di capire come funzionassero davvero.
@@ -22,11 +22,6 @@ Oggi, dopo cinque stampanti, moltissimi errori e diversi progetti disegnati da z
 
 > **Quando ha davvero senso costruire un oggetto con una stampante 3D invece di comprarlo?**
 
-<section class="print-opening" aria-label="La mia esperienza con la stampa 3D">
-  <div class="print-opening-copy"><span>DAL 2012 A OGGI</span><strong>5</strong><h2>stampanti.<br/>Una sola scuola:<br/>provare davvero.</h2></div>
-  <div class="print-layer-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b>0,20</b><small>mm / layer</small></div>
-</section>
-
 ## Cinque stampanti, cinque scuole differenti
 
 La **Ender 2** mi ha insegnato le basi. Aveva un solo montante per l'asse Z e richiedeva più attenzioni rispetto alle macchine moderne, ma era piccola, precisa e facile da osservare. Con lei ho iniziato a capire che una stampante 3D non è una scatola magica: è un insieme di meccanica, elettronica, calore e software.
@@ -39,8 +34,6 @@ Poi è arrivata la **Creality K1C**. Per me ha rappresentato una svolta: finalme
 
 Infine ho acquistato la **Creality K2 Plus**, con un volume di 350 × 350 × 350 millimetri e il sistema multicolore CFS. Era una macchina completa, grande e pesante: circa 35 chilogrammi da spostare ogni volta che serviva una manutenzione. Dopo circa 1.300 ore di utilizzo ho scelto di venderla: non perché fosse incapace di stampare, ma perché volevo provare una soluzione più stabile e non aveva senso lasciarla ferma a raccogliere polvere.
 
-<figure class="article-photo article-photo-dark"><img src="/immagini/stampa-3d/stampanti/creality-k2-plus.webp" alt="Creality K2 Plus con il sistema multicolore CFS" loading="lazy"/><figcaption>La Creality K2 Plus che ho utilizzato: grande volume, CFS e una macchina capace di stampe eccellenti quando era ben calibrata.</figcaption></figure>
-
 Questa è stata una lezione importante: **la stampante più grande e completa non è necessariamente quella giusta**. Bisogna sapere che cosa si vuole costruire.
 
 <div class="printer-timeline" aria-label="Le cinque stampanti utilizzate">
@@ -48,12 +41,9 @@ Questa è stata una lezione importante: **la stampante più grande e completa no
   <article><img src="/immagini/stampa-3d/stampanti/anet-et4.webp" alt="Stampante 3D Anet ET4" loading="lazy"/><span>02</span><small>PIÙ SOLIDA</small><strong>Anet ET4</strong><p>Struttura più solida, manutenzione semplice e più spazio per imparare.</p><a href="https://the3dprinterstore.com/products/anet-et4-3d-printer" target="_blank" rel="noreferrer">Foto di riferimento</a></article>
   <article><img src="/immagini/stampa-3d/stampanti/flsun-qqs-pro.webp" alt="Stampante Delta FLSUN QQ-S Pro" loading="lazy"/><span>03</span><small>LA DELTA</small><strong>FLSUN QQ-S Pro</strong><p>Silenziosa e affascinante, ma comprata usata e ricostruita con pazienza.</p><a href="https://www.3dprintersonlinestore.com/flsun-qq-s-pro-3d-printer" target="_blank" rel="noreferrer">Foto di riferimento</a></article>
   <article><img src="/immagini/stampa-3d/stampanti/creality-k1c.webp" alt="Stampante 3D chiusa Creality K1C" loading="lazy"/><span>04</span><small>LA SVOLTA</small><strong>Creality K1C</strong><p>La velocità necessaria per progettare, verificare e correggere davvero.</p><a href="https://store.creality.com/jp/products/k1c-3d-printer" target="_blank" rel="noreferrer">Immagine Creality</a></article>
-  <article><img src="/immagini/stampa-3d/stampanti/creality-k2-plus.webp" alt="Creality K2 Plus con sistema multicolore CFS" loading="lazy"/><span>05</span><small>LA PIÙ GRANDE</small><strong>Creality K2 Plus</strong><p>Multicolore e 350 mm di volume, poi venduta perché non la utilizzavo abbastanza.</p><a href="https://store.creality.com/products/k2-plus-cfs-2" target="_blank" rel="noreferrer">Immagine Creality</a></article>
 </div>
 
 ## La camera riscaldata: il ricircolo dell’aria
-
-<figure class="article-diagram article-diagram-premium"><img src="https://compress-file.creality.com/images/Agent/08a0a98d-19e4-4122-b5b0-0507f37dbb7a.webp" alt="Render ufficiale della Creality K2 Plus, con camera chiusa e riscaldata" loading="lazy"/><figcaption>Render ufficiale Creality della K2 Plus. La camera chiusa e il sistema di riscaldamento aiutano a mantenere più stabile l’ambiente di stampa; il percorso dell’aria non è rappresentato con frecce inventate, perché nella mia esperienza il modulo faticava comunque a raggiungere il valore impostato senza preriscaldamento manuale.</figcaption></figure>
 
 Con PLA e PETG la camera chiusa funzionava bene. Con i materiali più tecnici dovevo invece preriscaldare manualmente la macchina, perché il modulo non raggiungeva sempre la temperatura prevista entro il tempo stabilito.
 
@@ -66,8 +56,6 @@ Una volta, dopo aver smontato la ET4, dimenticai una vite importante e non contr
 ## Estrusore e hotend: il punto dove ho messo più spesso le mani
 
 Il gruppo estrusore è il cuore della macchina: gli ingranaggi trascinano il filamento, il tubo lo guida verso l'hotend e l'ugello lo deposita strato dopo strato. Quando un frammento si spezzava o l'ugello si intasava, dovevo smontare il gruppo, liberare gli ingranaggi e rimontare tutto.
-
-<figure class="article-diagram article-diagram-premium"><img src="https://pic2-cdn.creality.com/vip_mall/53958609-f253-46ad-820e-ca74b2aa9451" alt="Gruppo hotend originale Creality per K2 Plus" loading="lazy"/><figcaption>Gruppo hotend originale Creality per la K2 Plus: blocco ceramico, dissipatore e ugello a cambio rapido. È il punto dove ho dovuto intervenire più spesso.</figcaption></figure>
 
 Ho seguito tutorial e recensioni su YouTube, soprattutto mentre aspettavo che una nuova macchina mi venisse consegnata. Guardavo montaggio, configurazione, problemi conosciuti e accorgimenti utili. Il resto l'ho imparato attraverso prove ed errori.
 
