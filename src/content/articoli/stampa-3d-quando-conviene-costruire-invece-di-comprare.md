@@ -37,7 +37,9 @@ La terza è stata una **FLSUN QQ-S Pro**, la mia prima Delta. Una stampante Delt
 
 Poi è arrivata la **Creality K1C**. Per me ha rappresentato una svolta: finalmente potevo ottenere un prototipo in tempi abbastanza brevi da correggerlo e ristamparlo nella stessa giornata. Una macchina dichiarata fino a 600 mm/s non lavora sempre a quella velocità, ma il salto rispetto alle generazioni precedenti era enorme. Disegnare un componente e aspettare trenta ore per scoprire che un foro era fuori posizione rende molto lento qualsiasi sviluppo. Con una macchina più rapida potevo stampare una versione alleggerita, controllare gli ingombri e tornare subito al progetto.
 
-Infine ho acquistato la **Creality K2 Plus**, con un volume di 350 × 350 × 350 millimetri e il sistema multicolore CFS. Era una macchina completa, grande e pesante: circa 35 chilogrammi da spostare ogni volta che serviva una manutenzione. In circa duemila ore di lavoro ha stampato bene, ma il progetto di avviare un'attività non è partito e la macchina è rimasta inutilizzata per lunghi periodi. L'ho venduta. Tenere un'attrezzatura simile a raccogliere polvere non aveva senso.
+Infine ho acquistato la **Creality K2 Plus**, con un volume di 350 × 350 × 350 millimetri e il sistema multicolore CFS. Era una macchina completa, grande e pesante: circa 35 chilogrammi da spostare ogni volta che serviva una manutenzione. Dopo circa 1.300 ore di utilizzo ho scelto di venderla: non perché fosse incapace di stampare, ma perché volevo provare una soluzione più stabile e non aveva senso lasciarla ferma a raccogliere polvere.
+
+<figure class="article-photo article-photo-dark"><img src="/immagini/stampa-3d/stampanti/creality-k2-plus.webp" alt="Creality K2 Plus con il sistema multicolore CFS" loading="lazy"/><figcaption>La Creality K2 Plus che ho utilizzato: grande volume, CFS e una macchina capace di stampe eccellenti quando era ben calibrata.</figcaption></figure>
 
 Questa è stata una lezione importante: **la stampante più grande e completa non è necessariamente quella giusta**. Bisogna sapere che cosa si vuole costruire.
 
@@ -49,11 +51,23 @@ Questa è stata una lezione importante: **la stampante più grande e completa no
   <article><img src="/immagini/stampa-3d/stampanti/creality-k2-plus.webp" alt="Creality K2 Plus con sistema multicolore CFS" loading="lazy"/><span>05</span><small>LA PIÙ GRANDE</small><strong>Creality K2 Plus</strong><p>Multicolore e 350 mm di volume, poi venduta perché non la utilizzavo abbastanza.</p><a href="https://store.creality.com/products/k2-plus-cfs-2" target="_blank" rel="noreferrer">Immagine Creality</a></article>
 </div>
 
+## La camera riscaldata: il ricircolo dell’aria
+
+<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-camera.svg" alt="Schema del ricircolo dell'aria calda nella camera della Creality K2 Plus" loading="lazy"/><figcaption>Il ricircolo interno aiuta a stabilizzare la temperatura, ma nella mia esperienza il modulo faticava a raggiungere il valore impostato senza un preriscaldamento manuale.</figcaption></figure>
+
+Con PLA e PETG la camera chiusa funzionava bene. Con i materiali più tecnici dovevo invece preriscaldare manualmente la macchina, perché il modulo non raggiungeva sempre la temperatura prevista entro il tempo stabilito.
+
 ## Le vecchie stampanti ti obbligavano a imparare
 
 Con le prime macchine non bastava premere un pulsante. Il pezzo poteva staccarsi perché il piatto non era livellato correttamente. Una cinghia poteva allentarsi, una ruota prendere gioco, il sensore della temperatura guastarsi oppure l'hotend richiedere la sostituzione.
 
 Una volta, dopo aver smontato la ET4, dimenticai una vite importante e non controllai correttamente i fine corsa dell'asse Z. L'ugello scese sul piatto e lo danneggiò. Da allora ho imparato a verificare ogni movimento prima di avviare una stampa completa.
+
+## Estrusore e hotend: il punto dove ho messo più spesso le mani
+
+Il gruppo estrusore è il cuore della macchina: gli ingranaggi trascinano il filamento, il tubo lo guida verso l'hotend e l'ugello lo deposita strato dopo strato. Quando un frammento si spezzava o l'ugello si intasava, dovevo smontare il gruppo, liberare gli ingranaggi e rimontare tutto.
+
+<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-estrusore.svg" alt="Schema del percorso del filamento nell'estrusore della Creality K2 Plus" loading="lazy"/><figcaption>Il percorso del filamento nell'estrusore: ogni passaggio deve restare libero perché la stampa continui senza interruzioni.</figcaption></figure>
 
 Ho seguito tutorial e recensioni su YouTube, soprattutto mentre aspettavo che una nuova macchina mi venisse consegnata. Guardavo montaggio, configurazione, problemi conosciuti e accorgimenti utili. Il resto l'ho imparato attraverso prove ed errori.
 
@@ -80,6 +94,12 @@ Non disponevo del modello. Ho smontato la serratura e fotografato frontalmente l
 Da quella forma bidimensionale ho estruso il profilo che entra nella serratura, poi ho disegnato il corpo cilindrico e l'impugnatura. La prima versione ha funzionato.
 
 Non era un oggetto spettacolare e probabilmente nessuno lo esporrebbe in una vetrina. Ma risolveva una necessità concreta con un pezzo che avevo ricostruito da solo. **Questa, per me, è la stampa 3D al suo meglio.**
+
+## Il piatto: quando la calibrazione non basta
+
+<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-piatto.svg" alt="Schema della deformazione del piatto della Creality K2 Plus" loading="lazy"/><figcaption>La deformazione che ho riscontrato dopo una stampa ad alta temperatura: centro più alto e angoli più bassi.</figcaption></figure>
+
+Il piatto deformato mi ha costretto a correggere l'offset dell'asse Z e a controllare il primo layer praticamente a ogni stampa. La calibrazione automatica aiutava, ma non poteva cancellare una deformazione fisica così evidente.
 
 ## Il modello conta quanto la stampante
 

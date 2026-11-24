@@ -18,6 +18,7 @@
 @media(max-width:600px){.header{padding-top:17px;padding-bottom:18px}.hero{padding-top:38px;padding-bottom:35px;gap:18px}.hero h1{font-size:46px;letter-spacing:-2.5px}.hero-art{max-width:none;padding:22px 13px;margin-top:10px;border-radius:16px}.art-caption{font-size:9px}.featured-text h2{font-size:32px}.cards{gap:22px}.manifesto{padding:25px}.article-card{padding-bottom:22px}.card-art{height:210px}}
 
 /* Fotografie originali negli articoli: inquadratura completa e didascalie. */
+.prose .article-diagram{margin:34px 0;padding:12px;background:#fff;border:1px solid var(--line);border-radius:14px}.prose .article-diagram img{display:block;width:100%;height:auto;border-radius:9px}.prose .article-diagram figcaption{font-size:14px;line-height:1.6;color:var(--muted);padding:12px 4px 2px}.prose .article-photo-dark img{background:#101c34}
 .prose .article-photo{margin:32px 0;padding:12px;background:#fff;border:1px solid var(--line);border-radius:14px}.prose .article-photo a{display:block}.prose .article-photo img{width:100%;height:auto;max-height:620px;object-fit:contain;border-radius:8px;background:#f0f3f8}.prose .article-photo figcaption{font-size:14px;line-height:1.6;color:var(--muted);padding:12px 4px 2px}.article-image:has(img[src$=".webp"]) img{height:auto;max-height:560px;background:#edf1f7;object-fit:contain}@media(max-width:600px){.prose .article-photo{padding:8px}.prose .article-photo figcaption{font-size:13px}}
 
 /* Homepage editoriale centrata sull’ultimo articolo. */
