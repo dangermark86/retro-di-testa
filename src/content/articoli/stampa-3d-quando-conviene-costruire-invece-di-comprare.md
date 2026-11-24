@@ -53,7 +53,7 @@ Questa è stata una lezione importante: **la stampante più grande e completa no
 
 ## La camera riscaldata: il ricircolo dell’aria
 
-<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-camera.svg" alt="Schema del ricircolo dell'aria calda nella camera della Creality K2 Plus" loading="lazy"/><figcaption>Il ricircolo interno aiuta a stabilizzare la temperatura, ma nella mia esperienza il modulo faticava a raggiungere il valore impostato senza un preriscaldamento manuale.</figcaption></figure>
+<figure class="article-diagram article-diagram-premium"><img src="https://compress-file.creality.com/images/Agent/08a0a98d-19e4-4122-b5b0-0507f37dbb7a.webp" alt="Render ufficiale della Creality K2 Plus, con camera chiusa e riscaldata" loading="lazy"/><figcaption>Render ufficiale Creality della K2 Plus. La camera chiusa e il sistema di riscaldamento aiutano a mantenere più stabile l’ambiente di stampa; il percorso dell’aria non è rappresentato con frecce inventate, perché nella mia esperienza il modulo faticava comunque a raggiungere il valore impostato senza preriscaldamento manuale.</figcaption></figure>
 
 Con PLA e PETG la camera chiusa funzionava bene. Con i materiali più tecnici dovevo invece preriscaldare manualmente la macchina, perché il modulo non raggiungeva sempre la temperatura prevista entro il tempo stabilito.
 
@@ -67,7 +67,7 @@ Una volta, dopo aver smontato la ET4, dimenticai una vite importante e non contr
 
 Il gruppo estrusore è il cuore della macchina: gli ingranaggi trascinano il filamento, il tubo lo guida verso l'hotend e l'ugello lo deposita strato dopo strato. Quando un frammento si spezzava o l'ugello si intasava, dovevo smontare il gruppo, liberare gli ingranaggi e rimontare tutto.
 
-<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-estrusore.svg" alt="Schema del percorso del filamento nell'estrusore della Creality K2 Plus" loading="lazy"/><figcaption>Il percorso del filamento nell'estrusore: ogni passaggio deve restare libero perché la stampa continui senza interruzioni.</figcaption></figure>
+<figure class="article-diagram article-diagram-premium"><img src="https://pic2-cdn.creality.com/vip_mall/53958609-f253-46ad-820e-ca74b2aa9451" alt="Gruppo hotend originale Creality per K2 Plus" loading="lazy"/><figcaption>Gruppo hotend originale Creality per la K2 Plus: blocco ceramico, dissipatore e ugello a cambio rapido. È il punto dove ho dovuto intervenire più spesso.</figcaption></figure>
 
 Ho seguito tutorial e recensioni su YouTube, soprattutto mentre aspettavo che una nuova macchina mi venisse consegnata. Guardavo montaggio, configurazione, problemi conosciuti e accorgimenti utili. Il resto l'ho imparato attraverso prove ed errori.
 
@@ -97,7 +97,7 @@ Non era un oggetto spettacolare e probabilmente nessuno lo esporrebbe in una vet
 
 ## Il piatto: quando la calibrazione non basta
 
-<figure class="article-diagram"><img src="/immagini/stampa-3d/recensione-k2-piatto.svg" alt="Schema della deformazione del piatto della Creality K2 Plus" loading="lazy"/><figcaption>La deformazione che ho riscontrato dopo una stampa ad alta temperatura: centro più alto e angoli più bassi.</figcaption></figure>
+<figure class="article-diagram article-diagram-premium"><img src="/immagini/stampa-3d/k2-piatto-termico-v2.png" alt="Visualizzazione della deformazione termica del piatto della Creality K2 Plus" loading="lazy"/><figcaption>La deformazione che ho riscontrato dopo una stampa ad alta temperatura: il centro rimane più alto mentre gli angoli scendono. La vista inferiore mostra l’arco reale del piatto, senza esagerarlo.</figcaption></figure>
 
 Il piatto deformato mi ha costretto a correggere l'offset dell'asse Z e a controllare il primo layer praticamente a ogni stampa. La calibrazione automatica aiutava, ma non poteva cancellare una deformazione fisica così evidente.
 
