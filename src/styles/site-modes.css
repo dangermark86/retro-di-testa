@@ -54,3 +54,69 @@ html[data-site-mode=cosmo] :is(.comment-form input,.comment-form textarea,.artic
 html[data-site-mode=retro] :is(.article-actions button,.comments .button,.comment-votes button,.article-actions [data-copy-link]){background:#fff!important;color:#071a36!important;border:2px outset #dcecff!important;box-shadow:none!important}
 html[data-site-mode=retro] :is(.article-actions button:hover,.article-actions button[aria-pressed=true],.comments .button:hover,.comment-votes button:hover,.comment-votes button[aria-pressed=true],.article-actions [data-copy-link]:hover){background:#eaf0ff!important;color:#003fd1!important;border:2px outset #79dcf0!important}
 html[data-site-mode=retro] :is(.comment-form input,.comment-form textarea,.article-actions input){background:#fff!important;color:#071a36!important;border:2px inset #c0c0c0!important}
+
+/* Versione rinnovata: Cosmo resta l'unica identità visiva, più chiara e leggibile. */
+html[data-site-mode=cosmo] body{
+  background-color:#183552!important;
+  background-image:
+    radial-gradient(circle at 12% 22%,#ffffffb8 0 1px,transparent 2px),
+    radial-gradient(circle at 70% 60%,#8fe8f6a8 0 1px,transparent 2px),
+    radial-gradient(circle at 88% 18%,#ff8b85a0 0 1px,transparent 2px),
+    linear-gradient(180deg,#1b3e60,#122b47)!important;
+  background-size:210px 190px,330px 290px,430px 370px,auto!important;
+}
+html[data-site-mode=cosmo] body:before{opacity:.58!important}
+html[data-site-mode=cosmo] :is(.cinema-hero,.cinema-rail,.cinema-project,.cinema-editorial,.cinema-past,.cinema-manifesto,.cinema-lower){
+  background-color:#183554!important;
+  background-image:none!important;
+  opacity:1!important;
+}
+html[data-site-mode=cosmo] .cinema-hero{background:#173756!important;box-shadow:0 22px 60px #08182a80!important}
+html[data-site-mode=cosmo] .cinema-hero-image{opacity:1!important;filter:none!important;transform:none!important;background:#244968!important;border:1px solid #4c7295!important}
+html[data-site-mode=cosmo] .cinema-hero-image img{opacity:1!important;filter:none!important}
+html[data-site-mode=cosmo] .cinema-past-photo{background:#244968!important;border:1px solid #4c7295!important}
+html[data-site-mode=cosmo] .cinema-past-photo img{width:100%!important;max-width:360px!important;height:230px!important;margin:0 auto!important;object-fit:contain!important;opacity:1!important;filter:none!important}
+html[data-site-mode=cosmo] .cinema-past{min-height:280px!important}
+html[data-site-mode=cosmo] .cinema-manifesto{padding-top:26px!important;padding-bottom:26px!important;min-height:0!important}
+html[data-site-mode=cosmo] .cinema-manifesto p{font-size:clamp(1.35rem,3vw,2.25rem)!important}
+
+/* Superfici editoriali opache e grigio chiaro, per leggere senza affaticare gli occhi. */
+html[data-site-mode=cosmo] body:has(.article,.archive,.project-page,.guide-archive){background:#e9edf2!important;color:#18324f!important}
+html[data-site-mode=cosmo] :is(.article,.archive,.project-page,.guide-archive){background:#e9edf2!important;color:#18324f!important;border-color:#cfd8e3!important;box-shadow:none!important;background-image:none!important}
+html[data-site-mode=cosmo] :is(.article-card,.project-card,.project-topic,.project-next,.guide-card,.question-card,.article-actions,.comments,.filters a,.search){background:#f1f3f6!important;color:#18324f!important;border-color:#cbd5e1!important;box-shadow:0 8px 22px #18324f16!important}
+html[data-site-mode=cosmo] :is(.article h1,.article h2,.article h3,.archive h1,.archive h2,.project-page h1,.project-page h2,.project-page h3,.guide-archive h1,.guide-archive h2){color:#102947!important}
+html[data-site-mode=cosmo] :is(.article p,.archive p,.project-page p,.guide-archive p,.prose){color:#29425f!important}
+html[data-site-mode=cosmo] :is(.article a,.archive a,.project-page a,.guide-archive a,.prose a){color:#2458a6!important}
+html[data-site-mode=cosmo] :is(.article-image,.article-image img,.project-topic figure,.project-topic img,.guide-card-image){background:#e1e6ec!important;opacity:1!important}
+html[data-site-mode=cosmo] .article-image img,html[data-site-mode=cosmo] .project-topic img{filter:none!important}
+
+/* Nessun controllo nascosto o seconda modalità: Cosmo è l'unica modalità pubblica. */
+.header-mode-button,.site-mode-toggle,.cosmo-mode-button,.cosmo-mode-label{display:none!important}
+
+/* Rifinitura homepage: schede editoriali più calme e manifesto leggibile. */
+html[data-site-mode=cosmo] .cinema-editorial-card,
+html[data-site-mode=cosmo] .cinema-editorial-card.primary{
+  background:#f1f3f6!important;
+  color:#18324f!important;
+  border:1px solid #cbd5e1!important;
+}
+html[data-site-mode=cosmo] .cinema-editorial-card h3,
+html[data-site-mode=cosmo] .cinema-editorial-card p,
+html[data-site-mode=cosmo] .cinema-editorial-card.primary h3,
+html[data-site-mode=cosmo] .cinema-editorial-card.primary p{color:#18324f!important}
+html[data-site-mode=cosmo] .cinema-editorial-card .cinema-kicker,
+html[data-site-mode=cosmo] .cinema-editorial-card.primary .cinema-kicker{color:#3159a6!important}
+html[data-site-mode=cosmo] .cinema-editorial-card.primary .cinema-card-sign{color:#18324f18!important}
+html[data-site-mode=cosmo] .cinema-manifesto{
+  background:#1e3a59!important;
+  padding:38px 28px!important;
+}
+html[data-site-mode=cosmo] .cinema-manifesto p{
+  display:block;
+  max-width:920px;
+  padding:0 14px;
+  color:#f2f6fb!important;
+  line-height:1.22!important;
+  letter-spacing:-1px!important;
+  word-spacing:.08em;
+}
